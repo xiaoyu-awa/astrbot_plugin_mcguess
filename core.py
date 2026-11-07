@@ -7,6 +7,7 @@ plain functions so they can be unit-tested in isolation.
 from __future__ import annotations
 
 import re
+import unicodedata
 from typing import Any
 
 EXACT = "exact"
@@ -25,6 +26,39 @@ DIRECTION_ARROW = {UP: "⬆", DOWN: "⬇", None: ""}
 NUMBER_KINDS = {"number"}
 SET_KINDS = {"set"}
 VERSION_KINDS = {"version"}
+
+
+def name_length(name: str) -> int:
+    """Count displayed characters, including punctuation but excluding whitespace."""
+    return sum(not char.isspace() for char in str(name or ""))
+
+
+def _name_text(text: str) -> str:
+    return "".join(unicodedata.normalize("NFKC", str(text or "")).casefold().split())
+
+
+def name_characters(text: str, answer_name: str) -> list[dict[str, Any]]:
+    """Mark character membership only; neither position nor multiplicity is revealed."""
+    answer = _name_text(answer_name)
+    return [
+        {"char": char, "present": _name_text(char) in answer, "status": EXACT if _name_text(char) in answer else MISS}
+        for char in str(text or "") if not char.isspace()
+    ]
+
+
+def format_name_characters(characters: list[dict[str, Any]]) -> str:
+    return " ".join(f"{STATUS_EMOJI[EXACT if item['present'] else MISS]}{item['char']}" for item in characters)
+
+
+def name_contains(text: str, answer_name: str) -> bool:
+    query = _name_text(text)
+    return bool(query) and query in _name_text(answer_name)
+
+
+def attribute_value(entry: dict[str, Any], key: str) -> Any:
+    if key == "name_length":
+        return name_length(str(entry.get("name") or ""))
+    return (entry.get("attrs") or {}).get(key)
 
 
 # ---------------------------------------------------------------------------
@@ -48,6 +82,8 @@ def format_value(field: dict[str, Any], value: Any) -> str:
     """Format one raw attribute value into its localized display text."""
     kind = field.get("kind")
     if kind in NUMBER_KINDS:
+        if value == 0 and field.get("zero_label"):
+            return str(field["zero_label"])
         text = format_number(value, field)
         unit = str(field.get("unit") or "")
         return f"{text}{unit}" if unit else text
@@ -209,15 +245,14 @@ def evaluate_guess(
     answer_entry: dict[str, Any],
 ) -> dict[str, Any]:
     """Compare every configured attribute of two catalogue entries."""
-    guess_attrs = guess_entry.get("attrs") or {}
-    answer_attrs = answer_entry.get("attrs") or {}
     feedback = [
-        compare_field(field, guess_attrs.get(field.get("key")), answer_attrs.get(field.get("key")))
+        compare_field(field, attribute_value(guess_entry, field["key"]), attribute_value(answer_entry, field["key"]))
         for field in fields
     ]
     return {
         "correct": str(guess_entry.get("id")) == str(answer_entry.get("id")),
         "feedback": feedback,
+        "name_feedback": name_characters(str(guess_entry.get("name") or ""), str(answer_entry.get("name") or "")),
     }
 
 
@@ -256,6 +291,7 @@ def apply_guess(
         "attempt": len(guessed),
         "guessId": guess_id,
         "guessName": str(guess_entry.get("name") or ""),
+        "name_feedback": evaluation["name_feedback"],
         "correct": evaluation["correct"],
         "feedback": evaluation["feedback"],
     }
@@ -282,11 +318,12 @@ def _hint_text(field: dict[str, Any], answer_value: Any) -> str:
 
 
 def hint_plan(fields: list[dict[str, Any]], hint_fields: list[str] | None) -> list[str]:
-    """Ordered hint keys: configured attributes first, then name hints."""
+    """All attributes are available, with curated priorities followed by name hints."""
     available = {str(field.get("key")) for field in fields}
     plan = [key for key in (hint_fields or []) if key in available]
+    plan.extend(str(field["key"]) for field in fields)
     plan.extend([HINT_FIRST_CHAR, HINT_NAME_LENGTH])
-    return plan
+    return list(dict.fromkeys(plan))
 
 
 def build_hint(
@@ -318,8 +355,8 @@ def build_hint(
         if key == HINT_NAME_LENGTH:
             return {
                 "field": key,
-                "label": "名称长度",
-                "text": f"答案共 {len(name)} 个字",
+                "label": "名称字数",
+                "text": f"答案共 {name_length(name)} 个字（不计空白，含标点）",
             }
         field = field_map.get(key)
         if field is None:
@@ -558,16 +595,16 @@ def summarize_clues(
     of past guesses plus attributes revealed by hints. The answer entry is read
     solely through ``compare_field`` and for hinted fields.
     """
-    answer_attrs = answer_entry.get("attrs") or {}
-    hinted = {str(item.get("field")) for item in (hints or []) if isinstance(item, dict)}
+    hints = [item for item in (hints or []) if isinstance(item, dict)]
+    hinted = {str(item.get("field")) for item in hints if item.get("kind", "reveal") == "reveal"}
     clues: list[dict[str, Any]] = []
     for field in fields:
         key = str(field.get("key") or "")
         kind = field.get("kind") or "enum"
         observations = []
         for entry in guess_entries:
-            raw = (entry.get("attrs") or {}).get(key)
-            observations.append((raw, compare_field(field, raw, answer_attrs.get(key))))
+            raw = attribute_value(entry, key)
+            observations.append((raw, compare_field(field, raw, attribute_value(answer_entry, key))))
         if kind in NUMBER_KINDS:
             clue = _number_clue(field, observations)
         elif kind in VERSION_KINDS:
@@ -577,8 +614,12 @@ def summarize_clues(
         else:
             clue = _enum_clue(field, observations)
         if clue["state"] != CLUE_KNOWN and key in hinted:
-            value = answer_attrs.get(key)
+            value = attribute_value(answer_entry, key)
             shown = format_values(field, value) if kind in SET_KINDS else format_value(field, value)
             clue = {"state": CLUE_KNOWN, "text": f"= {shown}（提示）"}
+        predicates = [str(item["text"]) for item in hints if item.get("field") == key and item.get("kind") == "predicate"]
+        if predicates and clue["state"] != CLUE_KNOWN:
+            text = "；".join(filter(None, [clue["text"], *predicates]))
+            clue = {"state": CLUE_PARTIAL, "text": text}
         clues.append({"key": key, "label": str(field.get("label") or key), **clue})
     return clues

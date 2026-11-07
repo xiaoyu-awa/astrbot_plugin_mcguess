@@ -59,6 +59,13 @@ def test_format_values_joins_set_labels():
     assert core.format_values(field, []) == "无"
 
 
+def test_zero_labels_explain_non_living_entities_and_non_item_blocks():
+    assert core.format_value({"kind": "number", "zero_label": "不适用"}, 0) == "不适用"
+    assert core.format_value({"kind": "number", "zero_label": "无物品形式"}, 0) == "无物品形式"
+    assert core.format_value({"kind": "number", "zero_label": "不适用"}, 20) == "20"
+    assert core.format_value({"kind": "number"}, 0) == "0"
+
+
 # ---- numeric comparison ----------------------------------------------------
 def test_number_exact_match_has_no_direction():
     result = core.compare_field(FIELDS[0], 3, 3)
@@ -170,12 +177,11 @@ def test_build_hint_walks_configured_fields_then_name_hints():
     assert second["field"] == "hardness" and "3" in second["text"]
     used.append(second["field"])
 
-    third = core.build_hint(ENTRY, FIELDS, ["tool", "hardness"], used, limit=5)
-    assert third["field"] == core.HINT_FIRST_CHAR and "钻" in third["text"]
-    used.append(third["field"])
-
-    fourth = core.build_hint(ENTRY, FIELDS, ["tool", "hardness"], used, limit=5)
-    assert fourth["field"] == core.HINT_NAME_LENGTH and "4" in fourth["text"]
+    for key in ("tags", "release", core.HINT_FIRST_CHAR, core.HINT_NAME_LENGTH):
+        hint = core.build_hint(ENTRY, FIELDS, ["tool", "hardness"], used, limit=6)
+        assert hint["field"] == key
+        used.append(key)
+    assert "4" in hint["text"]
 
 
 def test_build_hint_raises_when_limit_reached():
@@ -184,11 +190,11 @@ def test_build_hint_raises_when_limit_reached():
 
 
 def test_build_hint_reports_plan_exhaustion_separately():
-    used = [core.HINT_FIRST_CHAR, core.HINT_NAME_LENGTH]
+    used = [field["key"] for field in FIELDS] + [core.HINT_FIRST_CHAR, core.HINT_NAME_LENGTH]
     with pytest.raises(ValueError, match="没有更多可用的提示"):
-        core.build_hint(ENTRY, FIELDS, [], used, limit=5)
+        core.build_hint(ENTRY, FIELDS, [], used, limit=10)
 
 
 def test_build_hint_ignores_unknown_configured_fields():
     hint = core.build_hint(ENTRY, FIELDS, ["no_such_field"], [], limit=5)
-    assert hint["field"] == core.HINT_FIRST_CHAR
+    assert hint["field"] == "hardness"

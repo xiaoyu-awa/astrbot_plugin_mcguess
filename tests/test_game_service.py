@@ -111,7 +111,7 @@ def test_hint_walks_the_configured_plan(tmp_dir, catalogue):
         updated, hint, _answer = await service.hint("s-1", catalogue)
         assert hint["field"] == "hardness"
         updated, hint, _answer = await service.hint("s-1", catalogue)
-        assert hint["field"] == "first_char"
+        assert hint["field"] == "transparent"
 
         with pytest.raises(ValueError, match="提示次数已经用完"):
             await service.hint("s-1", catalogue)

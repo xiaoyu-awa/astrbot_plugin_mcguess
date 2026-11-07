@@ -29,13 +29,15 @@ def _round_context(state: dict[str, Any], category: Category, answer: dict[str, 
                 "name": entry.get("name") or entry_id,
                 "player": players[index] if index < len(players) else "",
                 "states": [item["status"] for item in evaluation["feedback"]],
+                "name_feedback": evaluation["name_feedback"],
                 "correct": evaluation["correct"],
             }
         )
     hints = [item for item in (state.get("hints") or []) if isinstance(item, dict)]
     clues = core.summarize_clues(category.fields, entries, answer, hints)
     hint_notes = [
-        str(item.get("text") or "") for item in hints if item.get("field") in (core.HINT_FIRST_CHAR, core.HINT_NAME_LENGTH)
+        str(item.get("text") or "") for item in hints
+        if item.get("field") in (core.HINT_FIRST_CHAR, core.HINT_NAME_LENGTH) or item.get("kind") in ("predicate", "contains")
     ]
     return {
         "history": list(reversed(history))[:HISTORY_ROWS],
@@ -71,6 +73,7 @@ def guess_view(
         remaining=max(0, max_attempts - context["attempt"]),
         guess_name=str(guess.get("name") or ""),
         guess_name_en=str(guess.get("name_en") or ""),
+        name_feedback=core.name_characters(str(guess.get("name") or ""), str(answer.get("name") or "")),
         player=str(row.get("player") or ""),
         feedback=row.get("feedback"),
         status_text=status_text,

@@ -21,6 +21,9 @@ RAW_DIR = TOOLS_DIR / "mcdle_raw"
 CATEGORY_ORDER = ["block", "item", "mob"]
 FIELD_ORDER = {
     "block": [
+        "dimensions",
+        "inventory_categories",
+        "name_length",
         "hardness",
         "blast_resistance",
         "tool",
@@ -34,6 +37,8 @@ FIELD_ORDER = {
         "initial_release",
     ],
     "item": [
+        "dimensions",
+        "name_length",
         "rarity",
         "stackable",
         "renewable",
@@ -44,7 +49,7 @@ FIELD_ORDER = {
         "loot",
         "initial_release",
     ],
-    "mob": ["health", "height", "behavior", "spawn", "classification", "initial_release"],
+    "mob": ["dimensions", "inventory_categories", "name_length", "health", "height", "behavior", "spawn", "classification", "initial_release"],
 }
 ALLOWED_KINDS = {"number", "enum", "set", "version"}
 TIER1_MIN = {"block": 60, "item": 50, "mob": 35}
@@ -54,7 +59,7 @@ EXPECTED_NUMBERS = {
     "mob": {"health": 2, "height": 0.1},
 }
 RELATIVE_TOLERANCE_FIELDS = {("block", "blast_resistance")}
-TECHNICAL_UNANSWERABLE = {
+ADMIN_OR_TECHNICAL_IDS = {
     "barrier",
     "bedrock",
     "command_block",
@@ -100,7 +105,6 @@ EXPECTED_ALIASES = {
     ("mob", "enderman"): "小黑",
     ("mob", "wither"): "凋零",
 }
-FORBIDDEN_NAME_FRAGMENTS = ("绒球葱", "雕纹下界", "雕纹石砖", "雕纹磨制黑石", "暗海晶石", "红沙")
 NORMALIZE_TRIM = (" ", "\u3000", "\t", "_", "-", "·", "・", "\u00b7")
 
 
@@ -277,8 +281,8 @@ def test_attr_value_types(categories):
                     assert isinstance(value, str) and value, (entry["id"], key)
 
 
-def test_empty_set_attributes_are_known_source_gaps(categories):
-    """数据集里只有 copper_nugget 的 obtaining/usage 是空数组，其余集合字段都不为空。"""
+def test_set_attributes_are_complete(categories):
+    """完整注册表导入同时补全了 copper_nugget 原来的两处来源空缺。"""
     empty = set()
     for category in CATEGORY_ORDER:
         mapping = field_map(categories, category)
@@ -286,7 +290,7 @@ def test_empty_set_attributes_are_known_source_gaps(categories):
             for key, value in entry["attrs"].items():
                 if mapping[key]["kind"] == "set" and not value:
                     empty.add((category, entry["id"], key))
-    assert empty == {("item", "copper_nugget", "obtaining"), ("item", "copper_nugget", "usage")}
+    assert empty == set()
 
 
 def test_tiers_and_answerable_are_sane(categories):
@@ -320,11 +324,11 @@ def test_answer_pools_are_nested(categories):
         assert all(entry["answerable"] for entry in entries(categories, category) if entry["tier"] == 1)
 
 
-def test_technical_entries_are_guessable_but_not_answers(categories):
+def test_technical_entries_are_answers_outside_the_easy_pool(categories):
     for category in CATEGORY_ORDER:
         by_id = {entry["id"]: entry for entry in entries(categories, category)}
-        for entry_id in TECHNICAL_UNANSWERABLE & set(by_id):
-            assert by_id[entry_id]["answerable"] is False, entry_id
+        for entry_id in ADMIN_OR_TECHNICAL_IDS & set(by_id):
+            assert by_id[entry_id]["answerable"] is True, entry_id
             assert by_id[entry_id]["tier"] > 1, f"{entry_id} 不应出现在简单池"
 
 
@@ -346,10 +350,17 @@ def test_names_use_official_chinese(categories):
     for (category, entry_id), expected in EXPECTED_NAMES.items():
         by_id = {entry["id"]: entry["name"] for entry in entries(categories, category)}
         assert by_id[entry_id] == expected, f"{category}/{entry_id}"
-    all_names = [entry["name"] for category in CATEGORY_ORDER for entry in entries(categories, category)]
-    for name in all_names:
-        for fragment in FORBIDDEN_NAME_FRAGMENTS:
-            assert fragment not in name, f"{name} 含有错误译名片段 {fragment}"
+    # These official 1.21.9 variant names were absent from the concept-only
+    # data; they must not be rejected by its former substring blacklist.
+    by_id = {entry["id"]: entry for entry in entries(categories, "block")}
+    for entry_id, name in {
+        "allium": "绒球葱", "red_sand": "红沙", "chiseled_stone_bricks": "雕纹石砖",
+        "oak_log": "橡木原木", "cave_air": "洞穴空气",
+    }.items():
+        assert by_id[entry_id]["name"] == name
+    for category in CATEGORY_ORDER:
+        for entry in entries(categories, category):
+            assert "\ufffd" not in entry["name"], entry["id"]
 
 
 def test_aliases_cover_common_slang(categories):
@@ -383,7 +394,8 @@ def test_catalog_has_no_network_references(payload):
 
 
 def test_catalog_size_within_budget():
-    assert CATALOG_PATH.stat().st_size < 400 * 1024
+    # Full item variants intentionally exceed the former concept-only budget.
+    assert CATALOG_PATH.stat().st_size < 2 * 1024 * 1024
 
 
 def test_build_is_reproducible(build_module):
@@ -407,3 +419,66 @@ def test_curation_references_only_existing_ids():
         referenced |= set(data.get("name_fixes") or {}) | set(data.get("name_en_fixes") or {})
         referenced |= set(data.get("aliases") or {})
         assert referenced <= raw_ids[category], sorted(referenced - raw_ids[category])
+
+
+def test_all_java_1_21_9_registered_items_are_present(categories):
+    manifest = json.loads((RAW_DIR / "registry_1_21_9.json").read_text(encoding="utf-8"))
+    expected = set(manifest["registry_item_ids"])
+    assert manifest["edition"] == "Java"
+    assert manifest["game_version"] == "1.21.9"
+    assert manifest["registry_item_count"] == len(expected) == 1488
+    actual = {entry["id"] for entry in entries(categories, "item")}
+    raw = json.loads((RAW_DIR / "item.json").read_text(encoding="utf-8"))
+    assert actual == {row["id"] for row in raw}
+    assert actual == expected | set(manifest["preserved_concept_ids"])
+    assert len(actual) == 1509
+
+
+def test_registry_guard_rejects_missing_variants(build_module):
+    raw = json.loads((RAW_DIR / "item.json").read_text(encoding="utf-8"))
+    missing_variant = [row for row in raw if row["id"] != "copper_pickaxe"]
+    with pytest.raises(build_module.BuildError, match="copper_pickaxe"):
+        build_module.validate_registry_coverage(missing_variant, RAW_DIR)
+
+
+def test_refresh_checks_registry_before_writing(build_module, monkeypatch, tmp_dir):
+    real_load = build_module.load_json
+    source_payloads = {
+        "blockData.json": real_load(RAW_DIR / "block.json"),
+        "itemData.json": [row for row in real_load(RAW_DIR / "item.json") if row["id"] != "copper_pickaxe"],
+        "mobData.json": real_load(RAW_DIR / "mob.json"),
+        "valueMap.json": real_load(RAW_DIR / "value_map.json"),
+    }
+
+    def fake_load(path):
+        return source_payloads[path.name] if path.name in source_payloads else real_load(path)
+
+    def unexpected_write(*args, **kwargs):
+        pytest.fail("An incomplete refresh must not overwrite any raw file")
+
+    monkeypatch.setattr(build_module, "load_json", fake_load)
+    monkeypatch.setattr(build_module, "write_json", unexpected_write)
+    with pytest.raises(build_module.BuildError, match="copper_pickaxe"):
+        build_module.refresh_raw(tmp_dir, RAW_DIR)
+
+
+def test_item_variants_resolve_without_name_collisions(categories):
+    by_id = {entry["id"]: entry for entry in entries(categories, "item")}
+    for item_id, name in {
+        "diamond_sword": "钻石剑",
+        "netherite_pickaxe": "下界合金镐",
+        "copper_sword": "铜剑",
+        "oak_log": "橡木原木",
+        "red_sand": "红沙",
+        "axolotl_bucket": "美西螈桶",
+        "aquatic_mob_bucket": "水生生物桶",
+        "map": "空地图",
+        "filled_map": "地图",
+    }.items():
+        assert by_id[item_id]["name"] == name
+    for item_id in ("air", "budding_amethyst", "farmland", "creeper_spawn_egg", "copper_golem_spawn_egg"):
+        assert by_id[item_id]["answerable"] is True
+    assert by_id["white_banner"]["attrs"]["stackable"] == 16
+    assert by_id["diamond_sword"]["attrs"]["stackable"] == 1
+    assert by_id["copper_sword"]["attrs"]["initial_release"] == "1.21.9"
+    assert by_id["pale_oak_boat"]["attrs"]["initial_release"] == "1.21.4"

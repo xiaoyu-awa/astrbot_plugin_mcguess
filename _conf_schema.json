@@ -9,7 +9,7 @@
     "type": "int",
     "default": 3,
     "description": "每局免费提示次数",
-    "hint": "设为 0 关闭提示；默认 3。"
+    "hint": "范围 0-50，设为 0 关闭提示；默认 3。每个新问题一次；重复问题、无效问题和查看范围不扣次数。"
   },
   "render_cards": {
     "type": "bool",

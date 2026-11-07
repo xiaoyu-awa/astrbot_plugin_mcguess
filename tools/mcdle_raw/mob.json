@@ -1,21 +1,103 @@
 [
   {
     "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "金合欢木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "acacia_boat",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Acacia Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "金合欢木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "acacia_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Acacia Boat with Chest"
+  },
+  {
+    "behavior": [
       "passive"
     ],
     "chinese_title": "悦灵",
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 0.6,
     "id": "allay",
     "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "structure",
       "duplication"
     ],
     "title": "Allay"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "区域效果云",
+    "classification": [
+      "effect"
+    ],
+    "dimensions": [
+      "end"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "area_effect_cloud",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Area Effect Cloud"
   },
   {
     "behavior": [
@@ -25,10 +107,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 12,
     "height": 0.65,
     "id": "armadillo",
     "initial_release": "1.20.5",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding"
@@ -39,20 +128,128 @@
     "behavior": [
       "passive"
     ],
+    "chinese_title": "盔甲架",
+    "classification": [
+      "decoration"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 20,
+    "height": 1.975,
+    "id": "armor_stand",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Armor Stand"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "箭",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "overworld",
+      "nether"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "arrow",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Arrow"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
     "chinese_title": "美西螈",
     "classification": [
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 14,
     "height": 0.42,
     "id": "axolotl",
     "initial_release": "1.17",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "biome",
       "breeding"
     ],
     "title": "Axolotl"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "运输竹筏",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "bamboo_chest_raft",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Bamboo Raft with Chest"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "竹筏",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "bamboo_raft",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Bamboo Raft"
   },
   {
     "behavior": [
@@ -62,10 +259,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 6,
     "height": 0.9,
     "id": "bat",
     "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "light_level"
     ],
@@ -80,15 +284,72 @@
       "animal",
       "arthropod"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.6,
     "id": "bee",
     "initial_release": "1.15",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "block",
       "breeding"
     ],
     "title": "Bee"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "白桦木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "birch_boat",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Birch Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "白桦木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "birch_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Birch Boat with Chest"
   },
   {
     "behavior": [
@@ -98,15 +359,47 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 20,
     "height": 1.8,
     "id": "blaze",
     "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure",
       "spawner"
     ],
     "title": "Blaze"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "方块展示实体",
+    "classification": [
+      "display",
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0,
+    "id": "block_display",
+    "initial_release": "1.19.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command"
+    ],
+    "title": "Block Display"
   },
   {
     "behavior": [
@@ -116,10 +409,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 16,
     "height": 1.99,
     "id": "bogged",
     "initial_release": "1.21",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "spawner"
@@ -134,14 +434,46 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 30,
     "height": 1.77,
     "id": "breeze",
     "initial_release": "1.21",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "spawner"
     ],
     "title": "Breeze"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "旋风人风弹",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0.3125,
+    "id": "breeze_wind_charge",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Breeze Wind Charge"
   },
   {
     "behavior": [
@@ -151,10 +483,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 32,
     "height": 2.375,
     "id": "camel",
     "initial_release": "1.20",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "structure",
       "breeding",
@@ -170,10 +509,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.7,
     "id": "cat",
     "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "structure",
       "breeding"
@@ -189,14 +535,96 @@
     "classification": [
       "arthropod"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 12,
     "height": 0.5,
     "id": "cave_spider",
     "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "spawner"
     ],
     "title": "Cave Spider"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "樱花木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "cherry_boat",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Cherry Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "樱花木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "cherry_chest_boat",
+    "initial_release": "1.20",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Cherry Boat with Chest"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "运输矿车",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "chest_minecart",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Minecart with Chest"
   },
   {
     "behavior": [
@@ -206,10 +634,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 4,
     "height": 0.7,
     "id": "chicken",
     "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "grass",
       "jockey",
@@ -227,14 +662,71 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 3,
     "height": 0.3,
     "id": "cod",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
     "title": "Cod"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "命令方块矿车",
+    "classification": [
+      "technical",
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "command_block_minecart",
+    "initial_release": "1.7.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Minecart with Command Block"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "铜傀儡",
+    "classification": [
+      "golem"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 12,
+    "height": 0.98,
+    "id": "copper_golem",
+    "initial_release": "1.21.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "summon"
+    ],
+    "title": "Copper Golem"
   },
   {
     "behavior": [
@@ -244,10 +736,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 1.4,
     "id": "cow",
     "initial_release": "Alpha 1.0.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "grass",
       "conversion",
@@ -264,10 +763,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 1,
     "height": 2.7,
     "id": "creaking",
     "initial_release": "1.21.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "block",
       "summon"
@@ -282,14 +788,71 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.7,
     "id": "creeper",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "light_level"
     ],
     "title": "Creeper"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "深色橡木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "dark_oak_boat",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Dark Oak Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "深色橡木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "dark_oak_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Dark Oak Boat with Chest"
   },
   {
     "behavior": [
@@ -301,10 +864,17 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.6,
     "id": "dolphin",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
@@ -318,15 +888,47 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 22,
     "height": 1.5,
     "id": "donkey",
     "initial_release": "1.6.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "biome",
       "breeding"
     ],
     "title": "Donkey"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "末影龙火球",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "end"
+    ],
+    "health": 0,
+    "height": 1,
+    "id": "dragon_fireball",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Dragon Fireball"
   },
   {
     "behavior": [
@@ -337,10 +939,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.95,
     "id": "drowned",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "conversion",
       "biome",
@@ -352,20 +961,78 @@
   },
   {
     "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "掷出的鸡蛋",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "egg",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Thrown Egg"
+  },
+  {
+    "behavior": [
       "hostile"
     ],
     "chinese_title": "远古守卫者",
     "classification": [
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 80,
     "height": 1.9975,
     "id": "elder_guardian",
     "initial_release": "1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
     "spawn": [
       "structure"
     ],
     "title": "Elder Guardian"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "末地水晶",
+    "classification": [
+      "decoration",
+      "explosive"
+    ],
+    "dimensions": [
+      "end"
+    ],
+    "health": 0,
+    "height": 2,
+    "id": "end_crystal",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "End Crystal"
   },
   {
     "behavior": [
@@ -375,15 +1042,47 @@
     "classification": [
       "boss"
     ],
+    "dimensions": [
+      "end"
+    ],
     "health": 200,
     "height": 8,
     "id": "ender_dragon",
     "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure",
       "summon"
     ],
     "title": "Ender Dragon"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "掷出的末影珍珠",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "ender_pearl",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Thrown Ender Pearl"
   },
   {
     "behavior": [
@@ -393,10 +1092,19 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld",
+      "nether",
+      "end"
+    ],
     "health": 40,
     "height": 2.9,
     "id": "enderman",
     "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "light_level",
       "biome"
@@ -411,10 +1119,17 @@
     "classification": [
       "arthropod"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 8,
     "height": 0.3,
     "id": "endermite",
     "initial_release": "1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "projectile"
     ],
@@ -428,16 +1143,225 @@
     "classification": [
       "illager"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 24,
     "height": 1.95,
     "id": "evoker",
     "initial_release": "1.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure",
       "raids",
       "jockey"
     ],
     "title": "Evoker"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "唤魔者尖牙",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0.8,
+    "id": "evoker_fangs",
+    "initial_release": "1.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Evoker Fangs"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "掷出的附魔之瓶",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "experience_bottle",
+    "initial_release": "1.2.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Thrown Bottle o' Enchanting"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "经验球",
+    "classification": [
+      "experience"
+    ],
+    "dimensions": [
+      "overworld",
+      "nether",
+      "end"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "experience_orb",
+    "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "drops"
+    ],
+    "title": "Experience Orb"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "末影之眼",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "eye_of_ender",
+    "initial_release": "Beta 1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Eye of Ender"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "下落的方块",
+    "classification": [
+      "other_entity"
+    ],
+    "dimensions": [
+      "overworld",
+      "nether"
+    ],
+    "health": 0,
+    "height": 0.98,
+    "id": "falling_block",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "gravity"
+    ],
+    "title": "Falling Block"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "火球",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "nether"
+    ],
+    "health": 0,
+    "height": 1,
+    "id": "fireball",
+    "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Fireball"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "烟花火箭",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "firework_rocket",
+    "initial_release": "1.4.6",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Firework Rocket"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "浮漂",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "fishing_bobber",
+    "initial_release": "Alpha 1.1.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "fishing"
+    ],
+    "title": "Fishing Bobber"
   },
   {
     "behavior": [
@@ -448,10 +1372,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.7,
     "id": "fox",
     "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding"
@@ -466,15 +1397,47 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.5,
     "id": "frog",
     "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "conversion"
     ],
     "title": "Frog"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "动力矿车",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "furnace_minecart",
+    "initial_release": "Alpha 1.0.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Minecart with Furnace"
   },
   {
     "behavior": [
@@ -484,10 +1447,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 10,
     "height": 4,
     "id": "ghast",
     "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
@@ -497,36 +1467,51 @@
     "behavior": [
       "passive"
     ],
-    "chinese_title": "快乐恶魂",
-    "classification": [
-      "animal"
-    ],
-    "health": 20,
-    "height": 4,
-    "id": "happy_ghast",
-    "initial_release": "1.21.6",
-    "spawn": [
-      "block"
-    ],
-    "title": "Happy Ghast"
-  },
-  {
-    "behavior": [
-      "passive"
-    ],
     "chinese_title": "巨人",
     "classification": [
+      "none"
+    ],
+    "dimensions": [
       "none"
     ],
     "health": 100,
     "height": 12,
     "id": "giant",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "light_level",
       "command"
     ],
     "title": "Giant"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "荧光物品展示框",
+    "classification": [
+      "decoration"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "glow_item_frame",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Glow Item Frame"
   },
   {
     "behavior": [
@@ -537,10 +1522,17 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.8,
     "id": "glow_squid",
     "initial_release": "1.17",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "light_level"
     ],
@@ -554,10 +1546,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 1.3,
     "id": "goat",
     "initial_release": "1.17",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding"
@@ -572,10 +1571,17 @@
     "classification": [
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 30,
     "height": 0.85,
     "id": "guardian",
     "initial_release": "1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure"
     ],
@@ -585,14 +1591,96 @@
     "behavior": [
       "passive"
     ],
+    "chinese_title": "快乐恶魂",
+    "classification": [
+      "animal"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 20,
+    "height": 4,
+    "id": "happy_ghast",
+    "initial_release": "1.21.6",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "block"
+    ],
+    "title": "Happy Ghast"
+  },
+  {
+    "behavior": [
+      "hostile"
+    ],
+    "chinese_title": "疣猪兽",
+    "classification": [
+      "animal"
+    ],
+    "dimensions": [
+      "nether"
+    ],
+    "health": 40,
+    "height": 1.4,
+    "id": "hoglin",
+    "initial_release": "1.16",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "biome",
+      "structure",
+      "breeding"
+    ],
+    "title": "Hoglin"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "漏斗矿车",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "hopper_minecart",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Minecart with Hopper"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
     "chinese_title": "马",
     "classification": [
       "animal"
+    ],
+    "dimensions": [
+      "overworld"
     ],
     "health": 22,
     "height": 1.6,
     "id": "horse",
     "initial_release": "1.6.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "biome",
       "structure",
@@ -604,33 +1692,21 @@
     "behavior": [
       "hostile"
     ],
-    "chinese_title": "疣猪兽",
-    "classification": [
-      "animal"
-    ],
-    "health": 40,
-    "height": 1.4,
-    "id": "hoglin",
-    "initial_release": "1.16",
-    "spawn": [
-      "biome",
-      "structure",
-      "breeding"
-    ],
-    "title": "Hoglin"
-  },
-  {
-    "behavior": [
-      "hostile"
-    ],
     "chinese_title": "尸壳",
     "classification": [
       "undead"
+    ],
+    "dimensions": [
+      "overworld"
     ],
     "health": 20,
     "height": 1.95,
     "id": "husk",
     "initial_release": "1.10",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "jockey",
@@ -648,14 +1724,45 @@
     "classification": [
       "illager"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 32,
     "height": 1.95,
     "id": "illusioner",
     "initial_release": "1.12",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "command"
     ],
     "title": "Illusioner"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "交互实体",
+    "classification": [
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0,
+    "id": "interaction",
+    "initial_release": "1.19.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command"
+    ],
+    "title": "Interaction"
   },
   {
     "behavior": [
@@ -666,10 +1773,17 @@
     "classification": [
       "golem"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 100,
     "height": 2.7,
     "id": "iron_golem",
     "initial_release": "1.2.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure",
       "summon"
@@ -678,22 +1792,206 @@
   },
   {
     "behavior": [
-      "passive",
-      "hostile"
+      "not_applicable"
     ],
-    "chinese_title": "兔子",
+    "chinese_title": "物品",
     "classification": [
-      "animal"
+      "dropped_item"
     ],
-    "health": 3,
-    "height": 0.5,
-    "id": "rabbit",
-    "initial_release": "1.8",
+    "dimensions": [
+      "overworld",
+      "nether",
+      "end"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "item",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
-      "biome",
-      "breeding"
+      "command",
+      "drops"
     ],
-    "title": "Rabbit"
+    "title": "Item"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "物品展示实体",
+    "classification": [
+      "display",
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0,
+    "id": "item_display",
+    "initial_release": "1.19.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command"
+    ],
+    "title": "Item Display"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "物品展示框",
+    "classification": [
+      "decoration"
+    ],
+    "dimensions": [
+      "overworld",
+      "end"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "item_frame",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Item Frame"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "丛林木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "jungle_boat",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Jungle Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "丛林木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "jungle_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Jungle Boat with Chest"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "拴绳结",
+    "classification": [
+      "decoration"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "leash_knot",
+    "initial_release": "1.6.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Leash Knot"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "闪电束",
+    "classification": [
+      "weather"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0,
+    "id": "lightning_bolt",
+    "initial_release": "Beta 1.5",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "lightning"
+    ],
+    "title": "Lightning Bolt"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "滞留药水",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "lingering_potion",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Lingering Potion"
   },
   {
     "behavior": [
@@ -703,10 +2001,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 22,
     "height": 1.87,
     "id": "llama",
     "initial_release": "1.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding",
@@ -716,16 +2021,48 @@
   },
   {
     "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "羊驼唾沫",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "llama_spit",
+    "initial_release": "1.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Llama Spit"
+  },
+  {
+    "behavior": [
       "hostile"
     ],
     "chinese_title": "岩浆怪",
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 16,
-    "height": 2.04,
+    "height": 0.52,
     "id": "magma_cube",
     "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "biome",
       "spawner",
@@ -735,16 +2072,147 @@
   },
   {
     "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "红树木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "mangrove_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Mangrove Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "红树木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "mangrove_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Mangrove Boat with Chest"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "玩家模型",
+    "classification": [
+      "display",
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 20,
+    "height": 1.8,
+    "id": "mannequin",
+    "initial_release": "1.21.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command"
+    ],
+    "title": "Mannequin"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "标记",
+    "classification": [
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0,
+    "id": "marker",
+    "initial_release": "1.17",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "command"
+    ],
+    "title": "Marker"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "矿车",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "minecart",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Minecart"
+  },
+  {
+    "behavior": [
       "passive"
     ],
     "chinese_title": "哞菇",
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 1.4,
     "id": "mooshroom",
     "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding"
@@ -759,14 +2227,71 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 22,
     "height": 1.6,
     "id": "mule",
     "initial_release": "1.6.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "breeding"
     ],
     "title": "Mule"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "橡木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "oak_boat",
+    "initial_release": "Alpha 1.0.6",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Oak Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "橡木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "oak_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Oak Boat with Chest"
   },
   {
     "behavior": [
@@ -776,15 +2301,122 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.7,
     "id": "ocelot",
     "initial_release": "1.2.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding"
     ],
     "title": "Ocelot"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "不祥之物生成器",
+    "classification": [
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "ominous_item_spawner",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "trial_spawner"
+    ],
+    "title": "Ominous Item Spawner"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "画",
+    "classification": [
+      "decoration"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "painting",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Painting"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "苍白橡木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "pale_oak_boat",
+    "initial_release": "1.21.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Pale Oak Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "苍白橡木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "pale_oak_chest_boat",
+    "initial_release": "1.21.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Pale Oak Boat with Chest"
   },
   {
     "behavior": [
@@ -794,10 +2426,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.25,
     "id": "panda",
     "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding"
@@ -812,10 +2451,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 6,
     "height": 0.9,
     "id": "parrot",
     "initial_release": "1.12",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
@@ -829,10 +2475,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 0.5,
     "id": "phantom",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "summon",
       "light_level"
@@ -847,10 +2500,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.9,
     "id": "pig",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "grass",
       "breeding",
@@ -867,10 +2527,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 16,
     "height": 1.95,
     "id": "piglin",
     "initial_release": "1.16",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "structure"
@@ -885,10 +2552,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 50,
     "height": 1.95,
     "id": "piglin_brute",
     "initial_release": "1.16.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "structure"
     ],
@@ -903,10 +2577,17 @@
     "classification": [
       "illager"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 24,
     "height": 1.95,
     "id": "pillager",
     "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "overworld",
       "structure",
@@ -917,6 +2598,30 @@
   },
   {
     "behavior": [
+      "player_controlled"
+    ],
+    "chinese_title": "玩家",
+    "classification": [
+      "player"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 20,
+    "height": 1.8,
+    "id": "player",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "player_login"
+    ],
+    "title": "Player"
+  },
+  {
+    "behavior": [
       "neutral",
       "passive"
     ],
@@ -924,10 +2629,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 30,
     "height": 1.4,
     "id": "polar_bear",
     "initial_release": "1.10",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "biome"
     ],
@@ -943,14 +2655,47 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 3,
     "height": 0.7,
     "id": "pufferfish",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
     "title": "Pufferfish"
+  },
+  {
+    "behavior": [
+      "passive",
+      "hostile"
+    ],
+    "chinese_title": "兔子",
+    "classification": [
+      "animal"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 3,
+    "height": 0.5,
+    "id": "rabbit",
+    "initial_release": "1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "biome",
+      "breeding"
+    ],
+    "title": "Rabbit"
   },
   {
     "behavior": [
@@ -960,10 +2705,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 100,
     "height": 2.2,
     "id": "ravager",
     "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "raids"
     ],
@@ -978,10 +2730,17 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 3,
     "height": 0.4,
     "id": "salmon",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
@@ -995,10 +2754,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 8,
     "height": 1.3,
     "id": "sheep",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "grass",
       "breeding",
@@ -1014,15 +2780,47 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "end"
+    ],
     "health": 30,
     "height": 1,
     "id": "shulker",
     "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure",
       "duplication"
     ],
     "title": "Shulker"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "潜影弹",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "end"
+    ],
+    "health": 0,
+    "height": 0.3125,
+    "id": "shulker_bullet",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Shulker Bullet"
   },
   {
     "behavior": [
@@ -1032,10 +2830,17 @@
     "classification": [
       "arthropod"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 8,
     "height": 0.3,
     "id": "silverfish",
     "initial_release": "Beta 1.8",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "block",
       "spawner",
@@ -1051,10 +2856,18 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld",
+      "nether"
+    ],
     "health": 20,
     "height": 1.99,
     "id": "skeleton",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "light_level",
       "biome",
@@ -1074,10 +2887,17 @@
       "undead",
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 15,
     "height": 1.6,
     "id": "skeleton_horse",
     "initial_release": "1.6.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "lightning"
     ],
@@ -1091,10 +2911,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 16,
-    "height": 2.04,
+    "height": 0.52,
     "id": "slime",
     "initial_release": "Alpha 1.0.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "biome",
       "magic",
@@ -1104,20 +2931,28 @@
   },
   {
     "behavior": [
-      "passive"
+      "not_applicable"
     ],
-    "chinese_title": "雪傀儡",
+    "chinese_title": "小火球",
     "classification": [
-      "golem"
+      "projectile"
     ],
-    "health": 4,
-    "height": 1.9,
-    "id": "snow_golem",
+    "dimensions": [
+      "nether"
+    ],
+    "health": 0,
+    "height": 0.3125,
+    "id": "small_fireball",
     "initial_release": "1.0.0",
-    "spawn": [
-      "summon"
+    "inventory_categories": [
+      "not_applicable"
     ],
-    "title": "Snow Golem"
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Small Fireball"
   },
   {
     "behavior": [
@@ -1127,15 +2962,121 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 14,
     "height": 1.75,
     "id": "sniffer",
     "initial_release": "1.20",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "breeding",
       "hatching"
     ],
     "title": "Sniffer"
+  },
+  {
+    "behavior": [
+      "passive"
+    ],
+    "chinese_title": "雪傀儡",
+    "classification": [
+      "golem"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 4,
+    "height": 1.9,
+    "id": "snow_golem",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "summon"
+    ],
+    "title": "Snow Golem"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "雪球",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "snowball",
+    "initial_release": "Alpha 1.0.5",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Snowball"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "刷怪笼矿车",
+    "classification": [
+      "technical",
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "spawner_minecart",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command"
+    ],
+    "title": "Minecart with Monster Spawner"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "光灵箭",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "spectral_arrow",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Spectral Arrow"
   },
   {
     "behavior": [
@@ -1146,16 +3087,98 @@
     "classification": [
       "arthropod"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 16,
     "height": 0.9,
     "id": "spider",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "light_level",
       "spawner",
       "jockey"
     ],
     "title": "Spider"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "喷溅药水",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0.25,
+    "id": "splash_potion",
+    "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Splash Potion"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "云杉木船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "spruce_boat",
+    "initial_release": "1.9",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Spruce Boat"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "云杉木运输船",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.5625,
+    "id": "spruce_chest_boat",
+    "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Spruce Boat with Chest"
   },
   {
     "behavior": [
@@ -1166,10 +3189,17 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 10,
     "height": 0.8,
     "id": "squid",
     "initial_release": "Beta 1.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome"
     ],
@@ -1183,10 +3213,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.99,
     "id": "stray",
     "initial_release": "1.10",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "light_level",
       "biome",
@@ -1203,10 +3240,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 20,
     "height": 1.7,
     "id": "strider",
     "initial_release": "1.16",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "biome",
       "breeding",
@@ -1223,14 +3267,146 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 6,
     "height": 0.3,
     "id": "tadpole",
     "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "hatching"
     ],
     "title": "Tadpole"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "文本展示实体",
+    "classification": [
+      "display",
+      "technical"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0,
+    "id": "text_display",
+    "initial_release": "1.19.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 6,
+    "spawn": [
+      "command"
+    ],
+    "title": "Text Display"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "被激活的TNT",
+    "classification": [
+      "explosive"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.98,
+    "id": "tnt",
+    "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 7,
+    "spawn": [
+      "command",
+      "ignition"
+    ],
+    "title": "Primed TNT"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "TNT矿车",
+    "classification": [
+      "vehicle"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.7,
+    "id": "tnt_minecart",
+    "initial_release": "1.5",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
+    "spawn": [
+      "command",
+      "placement"
+    ],
+    "title": "Minecart with TNT"
+  },
+  {
+    "behavior": [
+      "neutral"
+    ],
+    "chinese_title": "行商羊驼",
+    "classification": [
+      "animal"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 22,
+    "height": 1.87,
+    "id": "trader_llama",
+    "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "wandering_trader",
+      "command"
+    ],
+    "title": "Trader Llama"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "三叉戟",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "overworld"
+    ],
+    "health": 0,
+    "height": 0.5,
+    "id": "trident",
+    "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Trident"
   },
   {
     "behavior": [
@@ -1241,10 +3417,17 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 3,
     "height": 0.4,
     "id": "tropical_fish",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "biome"
     ],
@@ -1259,10 +3442,17 @@
       "animal",
       "aquatic"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 30,
     "height": 0.4,
     "id": "turtle",
     "initial_release": "1.13",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "biome",
       "breeding",
@@ -1278,10 +3468,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 14,
     "height": 0.8,
     "id": "vex",
     "initial_release": "1.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "summon"
     ],
@@ -1295,10 +3492,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.95,
     "id": "villager",
     "initial_release": "1.0.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "structure",
       "breeding",
@@ -1314,10 +3518,17 @@
     "classification": [
       "illager"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 24,
     "height": 1.95,
     "id": "vindicator",
     "initial_release": "1.11",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "structure",
       "raids",
@@ -1333,10 +3544,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.95,
     "id": "wandering_trader",
     "initial_release": "1.14",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "overworld"
     ],
@@ -1350,15 +3568,47 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 500,
     "height": 2.9,
     "id": "warden",
     "initial_release": "1.19",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "block",
       "summon"
     ],
     "title": "Warden"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "风弹",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.3125,
+    "id": "wind_charge",
+    "initial_release": "1.21",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Wind Charge"
   },
   {
     "behavior": [
@@ -1368,10 +3618,17 @@
     "classification": [
       "none"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 26,
     "height": 1.95,
     "id": "witch",
     "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "light_level",
       "structure",
@@ -1390,10 +3647,17 @@
       "undead",
       "boss"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 300,
     "height": 3.5,
     "id": "wither",
     "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "summon"
     ],
@@ -1407,14 +3671,46 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 20,
     "height": 2.4,
     "id": "wither_skeleton",
     "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "structure"
     ],
     "title": "Wither Skeleton"
+  },
+  {
+    "behavior": [
+      "not_applicable"
+    ],
+    "chinese_title": "凋灵之首",
+    "classification": [
+      "projectile"
+    ],
+    "dimensions": [
+      "none"
+    ],
+    "health": 0,
+    "height": 0.3125,
+    "id": "wither_skull",
+    "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
+    "spawn": [
+      "command",
+      "projectile"
+    ],
+    "title": "Wither Skull"
   },
   {
     "behavior": [
@@ -1425,10 +3721,17 @@
     "classification": [
       "animal"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 8,
     "height": 0.85,
     "id": "wolf",
     "initial_release": "Beta 1.4",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 1,
     "spawn": [
       "biome",
       "breeding"
@@ -1443,10 +3746,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 40,
     "height": 1.4,
     "id": "zoglin",
     "initial_release": "1.16",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 5,
     "spawn": [
       "conversion"
     ],
@@ -1460,10 +3770,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.95,
     "id": "zombie",
     "initial_release": "pre-alpha",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 2,
     "spawn": [
       "light_level",
       "conversion",
@@ -1483,10 +3800,17 @@
       "undead",
       "animal"
     ],
+    "dimensions": [
+      "none"
+    ],
     "health": 15,
     "height": 1.6,
     "id": "zombie_horse",
     "initial_release": "1.6.1",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 3,
     "spawn": [
       "command"
     ],
@@ -1500,10 +3824,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "overworld"
+    ],
     "health": 20,
     "height": 1.95,
     "id": "zombie_villager",
     "initial_release": "1.4.2",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "light_level",
       "conversion",
@@ -1521,10 +3852,17 @@
     "classification": [
       "undead"
     ],
+    "dimensions": [
+      "nether"
+    ],
     "health": 20,
     "height": 1.95,
     "id": "zombified_piglin",
     "initial_release": "Alpha 1.2.0",
+    "inventory_categories": [
+      "not_applicable"
+    ],
+    "name_length": 4,
     "spawn": [
       "biome",
       "structure",
@@ -1535,22 +3873,5 @@
       "block"
     ],
     "title": "Zombified Piglin"
-  },
-  {
-    "behavior": [
-      "passive"
-    ],
-    "chinese_title": "铜傀儡",
-    "classification": [
-      "golem"
-    ],
-    "health": 12,
-    "height": 0.98,
-    "id": "copper_golem",
-    "initial_release": "1.21.9",
-    "spawn": [
-      "summon"
-    ],
-    "title": "Copper Golem"
   }
 ]

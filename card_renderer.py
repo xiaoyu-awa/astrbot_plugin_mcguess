@@ -181,9 +181,17 @@ def _history_rows(history: Any) -> list[dict[str, Any]]:
                 "states": states,
                 "hit": sum(1 for state in states if state == "exact"),
                 "correct": bool(item.get("correct")),
+                "name_feedback": _name_feedback(item.get("name_feedback")),
             }
         )
     return rows
+
+
+def _name_feedback(items: Any) -> list[dict[str, Any]]:
+    return [
+        {"char": str(item.get("char") or ""), "present": bool(item.get("present"))}
+        for item in (items or []) if isinstance(item, dict) and item.get("char")
+    ]
 
 
 def make_guess_card_view(
@@ -195,6 +203,7 @@ def make_guess_card_view(
     remaining: int,
     guess_name: str,
     guess_name_en: str = "",
+    name_feedback: list[dict[str, Any]] | None = None,
     feedback: list[dict[str, Any]] | None = None,
     status_text: str = "",
     category_key: str = "",
@@ -228,6 +237,7 @@ def make_guess_card_view(
         "remaining": max(0, _int(remaining, 0)),
         "guess_name": str(guess_name or ""),
         "guess_name_en": str(guess_name_en or ""),
+        "name_feedback": _name_feedback(name_feedback),
         "player": str(player or ""),
         "status_text": str(status_text or ""),
         "columns": _columns(columns) if columns is not None else auto_columns(len(tiles)),
@@ -354,6 +364,11 @@ body {
 .guess .main { flex: 1; min-width: 0; }
 .guess .name { font-size: 28px; font-weight: 800; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .guess .name span { font-size: 16px; font-weight: 500; color: rgba(242,244,240,.55); margin-left: 10px; }
+.guess .name:has(.name-char) { white-space: normal; overflow: visible; overflow-wrap: anywhere; }
+.name-char { display: inline-block; border-radius: 4px; padding: 1px 3px; margin: 0 2px 2px 0; }
+.guess .name .name-char { font-size: inherit; font-weight: inherit; margin: 0 2px 2px 0; }
+.name-char.present, .guess .name .name-char.present { color: #A8E9BA; background: #234332; }
+.name-char.absent, .guess .name .name-char.absent { color: #BEC2C7; background: #343940; }
 .score { flex: none; text-align: right; }
 .score .v { font-size: 26px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .score .v small { font-size: 15px; font-weight: 500; color: rgba(242,244,240,.55); }
@@ -410,7 +425,7 @@ body {
 .row + .row { border-top: 1px solid rgba(255,255,255,.06); }
 .row.cur { background: rgba(255,255,255,.04); }
 .row .n { width: 30px; color: rgba(242,244,240,.5); font-variant-numeric: tabular-nums; }
-.row .nm { width: 170px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .nm { width: 170px; font-weight: 700; overflow-wrap: anywhere; }
 .row .pl { flex: 1; min-width: 0; color: rgba(242,244,240,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sq { display: flex; gap: 3px; }
 .sq i { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center;
@@ -543,13 +558,24 @@ def _banner(view: dict[str, Any]) -> str:
         )
     if kind == "status":
         return ""
-    name = _text(view.get("guess_name") or "—")
+    name = _marked_name(view.get("guess_name") or "—", view.get("name_feedback"))
     en = _text(view.get("guess_name_en"))
     name_html = f"{name}<span>{en}</span>" if en else name
     who = f"<b>{player}</b> 第 {attempt} 次猜" if player else f"第 {attempt} 次猜"
     return (
         f'<div class="guess"><div class="main"><div class="who">{who}</div>'
         f'<div class="name">{name_html}</div></div>{score}</div>'
+    )
+
+
+def _marked_name(name: str, items: Any) -> str:
+    characters = _name_feedback(items)
+    if not characters:
+        return _text(name)
+    return "".join(
+        f'<span class="name-char {"present" if item["present"] else "absent"}" '
+        f'title="答案{"含有" if item["present"] else "不含"}此字">{_text(item["char"])}</span>'
+        for item in characters
     )
 
 
@@ -645,7 +671,7 @@ def _history(view: dict[str, Any]) -> str:
             classes.append("win")
         html_rows.append(
             f'<div class="{" ".join(classes)}"><span class="n">#{_int(row.get("n"), 0)}</span>'
-            f'<span class="nm">{_text(row.get("name"))}</span><span class="pl">{_text(row.get("player"))}</span>'
+            f'<span class="nm">{_marked_name(row.get("name"), row.get("name_feedback"))}</span><span class="pl">{_text(row.get("player"))}</span>'
             f'<span class="sq">{squares}</span><span class="h">{_int(row.get("hit"), 0)}/{len(states)}</span></div>'
         )
     return (
@@ -661,6 +687,7 @@ def _legend() -> str:
         f'<span><i class="st close">{glyph("close", 12)}</i>接近</span>'
         f'<span><i class="st">{glyph("miss", 12)}</i>不同</span>'
         f'<span>{glyph("up", 15)}{glyph("down", 15)}答案更大 / 更小</span>'
+        '<span>名字绿字：含有 · 灰字：不含（不表示位置/次数）</span>'
         "</div>"
     )
 

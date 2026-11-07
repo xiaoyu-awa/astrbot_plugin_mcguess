@@ -3,17 +3,37 @@
     "defensive": "防御",
     "hostile": "敌对",
     "neutral": "中立",
-    "passive": "被动"
+    "not_applicable": "不适用",
+    "passive": "被动",
+    "player_controlled": "玩家控制"
   },
   "classification": {
     "animal": "动物",
     "aquatic": "水生",
     "arthropod": "节肢动物",
     "boss": "首领",
+    "decoration": "装饰实体",
+    "display": "展示实体",
+    "dropped_item": "掉落物",
+    "effect": "区域效果",
+    "experience": "经验实体",
+    "explosive": "爆炸物",
     "golem": "傀儡",
     "illager": "掠夺者",
     "none": "无",
-    "undead": "亡灵"
+    "other_entity": "其他实体",
+    "player": "玩家",
+    "projectile": "投射物",
+    "technical": "技术实体",
+    "undead": "亡灵",
+    "vehicle": "载具",
+    "weather": "天气实体"
+  },
+  "dimensions": {
+    "end": "末地",
+    "nether": "下界",
+    "none": "无直接自然来源记录",
+    "overworld": "主世界"
   },
   "fire_catch": {
     "no": "否",
@@ -31,15 +51,18 @@
     "yes": "是"
   },
   "inventory_categories": {
-    "combat": "战斗物品",
-    "food_and_drinks": "食物与饮料",
-    "functional_blocks": "功能性方块",
-    "ingredients": "材料",
+    "building_blocks": "建筑方块",
+    "colored_blocks": "染色方块",
+    "combat": "战斗用品",
+    "food_and_drinks": "食物与饮品",
+    "functional_blocks": "功能方块",
+    "ingredients": "原材料",
     "natural_blocks": "自然方块",
-    "none": "无",
-    "operator_utilities": "管理员工具",
-    "redstone_blocks": "红石相关方块",
-    "spawn_eggs": "生成蛋",
+    "none": "不在创造分类中",
+    "not_applicable": "不适用（实体无物品栏分类）",
+    "operator_utilities": "管理员用品",
+    "redstone_blocks": "红石方块",
+    "spawn_eggs": "刷怪蛋",
     "tools_and_utilities": "工具与实用物品"
   },
   "loot": {
@@ -99,9 +122,11 @@
     "Smelting": "熔炼",
     "Sniffer": "嗅探者",
     "Starting map": "起始地图",
+    "Stonecutting": "切石",
     "Suspicious block loot": "可疑方块掉落",
     "Tactical fishing": "战术钓鱼",
     "Trading": "交易",
+    "Trial spawner loot": "试炼刷怪笼掉落",
     "Upgrading": "升级",
     "Vault loot": "地牢掉落",
     "Villager gifts": "村民礼物",
@@ -115,10 +140,15 @@
     "uncommon": "不常见"
   },
   "recipe": {
+    "blast_furnace": "高炉",
     "brewing_stand": "酿造台",
+    "campfire": "营火",
     "crafting_table": "工作台",
     "furnace": "熔炉",
-    "none": "无"
+    "none": "无",
+    "smithing_table": "锻造台",
+    "smoker": "烟熏炉",
+    "stonecutter": "切石机"
   },
   "renewable": {
     "no": "否",
@@ -131,21 +161,29 @@
     "breeding": "繁殖",
     "command": "指令",
     "conversion": "转换",
+    "drops": "掉落",
     "duplication": "复制",
+    "fishing": "钓鱼",
     "grass": "草地",
+    "gravity": "重力下落",
     "hatching": "孵化",
+    "ignition": "点燃",
     "jockey": "骑乘",
     "light_level": "光照等级",
     "lightning": "闪电",
     "magic": "魔法",
     "overworld": "主世界",
+    "placement": "放置",
+    "player_login": "玩家加入",
     "projectile": "投射物",
     "raids": "袭击",
     "reinforcements": "增援",
     "sieges": "围攻",
     "spawner": "刷怪笼",
     "structure": "生成结构",
-    "summon": "召唤"
+    "summon": "召唤",
+    "trial_spawner": "试炼刷怪笼",
+    "wandering_trader": "流浪商人随行"
   },
   "tool": {
     "any_tool": "任意工具",
@@ -350,6 +388,7 @@
     "Writing": "写作",
     "Zoom": "缩放",
     "Zooming out": "缩放",
-    "combat": "战斗"
+    "combat": "战斗",
+    "none": "无"
   }
 }

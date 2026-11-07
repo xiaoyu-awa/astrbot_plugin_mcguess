@@ -3,9 +3,10 @@
 
 输入（本目录下的 ``mcdle_raw/``）：
 
-* ``block.json`` / ``item.json`` / ``mob.json``：从 koishi-plugin-mcdle 数据集裁剪出的原始词条；
+* ``block.json`` / ``item.json`` / ``mob.json``：完整 Java 1.21.9 方块、物品和实体及保留概念；
 * ``value_map.json``：原始枚举值 → Minecraft 官方中文译名（只复用，不自造）；
 * ``curation.json``：人工策展 —— 难度分级、别名、不可作为答案的条目、译名修正。
+* ``registry_1_21_9.json``：三类官方 ID 快照、全答案策略和来源记录，用于离线检查完整性。
 
 用法（在任意目录执行均可，路径都相对本文件解析）：
 
@@ -36,7 +37,11 @@ DEFAULT_SOURCE_DIR = PLUGIN_DIR.parent / "_design" / "samples" / "mcdle" / "json
 SCHEMA_VERSION = 1
 # 数据集里包含到 1.21.9（铜器时代）的内容，所以题库等价于该版本。
 GAME_VERSION = "1.21.9"
-SOURCE_NOTE = "Minecraft Wiki data, cleaned from koishi-plugin-mcdle (MIT OR Apache-2.0)"
+SOURCE_NOTE = (
+    "Minecraft Java 1.21.9 block/item/entity registries and vanilla datapack via misode/mcmeta; "
+    "extracted block properties and entity dimensions via PrismarineJS/minecraft-data; "
+    "curated Minecraft Wiki data from koishi-plugin-mcdle (MIT OR Apache-2.0)"
+)
 
 RAW_FILES = {"block": "block.json", "item": "item.json", "mob": "mob.json"}
 SOURCE_FILES = {
@@ -47,6 +52,7 @@ SOURCE_FILES = {
 SOURCE_VALUE_MAP = "valueMap.json"
 VALUE_MAP_FILE = "value_map.json"
 CURATION_FILE = "curation.json"
+REGISTRY_FILE = "registry_1_21_9.json"
 # 原始数据里带的外链字段一律丢弃：题库离线可用，不引用图片/网络资源。
 DROP_RAW_FIELDS = ("url", "image_url", "wiki_image_url")
 
@@ -54,26 +60,29 @@ CATEGORY_META: dict[str, dict[str, Any]] = {
     "block": {
         "label": "方块",
         "icon": "🧱",
-        "hint_fields": ["tool", "hardness", "transparent"],
+        "hint_fields": ["dimensions", "inventory_categories", "name_length", "tool", "hardness", "transparent"],
         "tier1_min": 60,
     },
     "item": {
         "label": "物品",
         "icon": "🎒",
-        "hint_fields": ["rarity", "obtaining", "renewable"],
+        "hint_fields": ["dimensions", "inventory_categories", "name_length", "rarity", "obtaining", "renewable"],
         "tier1_min": 50,
     },
     "mob": {
-        "label": "生物",
+        "label": "生物/实体",
         "icon": "🐷",
-        "hint_fields": ["behavior", "health", "classification"],
+        "hint_fields": ["dimensions", "name_length", "behavior", "health", "classification"],
         "tier1_min": 35,
     },
 }
 
-# 字段顺序 = 卡片/文本里的展示顺序，必须与 _design/mcguess-interfaces.md 第 1 节一致。
+# 字段顺序 = 卡片/文本里的展示顺序；新增上下文属性置于优先位置。
 FIELD_SPECS: dict[str, list[dict[str, Any]]] = {
     "block": [
+        {"key": "dimensions", "label": "来源维度", "kind": "set"},
+        {"key": "inventory_categories", "label": "创造物品栏分类", "kind": "set"},
+        {"key": "name_length", "label": "名称字数", "kind": "number", "tolerance": 0, "unit": "字"},
         {"key": "hardness", "label": "硬度", "kind": "number", "tolerance": 0.5},
         {"key": "blast_resistance", "label": "爆炸抗性", "kind": "number", "tolerance_ratio": 0.25},
         {"key": "tool", "label": "工具", "kind": "enum"},
@@ -82,23 +91,28 @@ FIELD_SPECS: dict[str, list[dict[str, Any]]] = {
         {"key": "full_block", "label": "完整方块", "kind": "enum"},
         {"key": "flammable", "label": "可燃性", "kind": "enum"},
         {"key": "fire_catch", "label": "火焰传播性", "kind": "enum"},
-        {"key": "stackable", "label": "堆叠数量", "kind": "number", "tolerance": 0},
+        {"key": "stackable", "label": "堆叠数量", "kind": "number", "tolerance": 0, "zero_label": "无物品形式"},
         {"key": "renewable", "label": "可再生性", "kind": "enum"},
         {"key": "initial_release", "label": "初始版本", "kind": "version"},
     ],
     "item": [
+        {"key": "dimensions", "label": "来源维度", "kind": "set"},
+        {"key": "name_length", "label": "名称字数", "kind": "number", "tolerance": 0, "unit": "字"},
         {"key": "rarity", "label": "稀有度", "kind": "enum"},
         {"key": "stackable", "label": "堆叠数量", "kind": "number", "tolerance": 0},
         {"key": "renewable", "label": "可再生性", "kind": "enum"},
         {"key": "obtaining", "label": "获得方式", "kind": "set"},
         {"key": "usage", "label": "用途", "kind": "set"},
-        {"key": "inventory_categories", "label": "库存类别", "kind": "set"},
+        {"key": "inventory_categories", "label": "创造物品栏分类", "kind": "set"},
         {"key": "recipe", "label": "合成方式", "kind": "set"},
         {"key": "loot", "label": "掉落方式", "kind": "set"},
         {"key": "initial_release", "label": "初始版本", "kind": "version"},
     ],
     "mob": [
-        {"key": "health", "label": "生命值", "kind": "number", "tolerance": 2},
+        {"key": "dimensions", "label": "来源维度", "kind": "set"},
+        {"key": "inventory_categories", "label": "创造物品栏分类", "kind": "set"},
+        {"key": "name_length", "label": "名称字数", "kind": "number", "tolerance": 0, "unit": "字"},
+        {"key": "health", "label": "生命值", "kind": "number", "tolerance": 2, "zero_label": "不适用"},
         {"key": "height", "label": "高度", "kind": "number", "tolerance": 0.1},
         {"key": "behavior", "label": "行为", "kind": "set"},
         {"key": "spawn", "label": "生成方式", "kind": "set"},
@@ -149,6 +163,36 @@ def normalize_name(value: Any) -> str:
     return text
 
 
+def validate_registry_coverage(records: list[dict[str, Any]], raw_dir: Path, category: str = "item") -> None:
+    """Use the offline registry snapshot to prevent missing blocks/items/entities."""
+    manifest_path = raw_dir / REGISTRY_FILE
+    if not manifest_path.is_file():
+        return
+    manifest = load_json(manifest_path)
+    if not isinstance(manifest, dict) or manifest.get("game_version") != GAME_VERSION:
+        raise BuildError(f"{REGISTRY_FILE} 的版本必须为 {GAME_VERSION}")
+    registry_kind = {"block": "block", "item": "item", "mob": "entity_type"}.get(category)
+    if registry_kind is None:
+        raise BuildError(f"未知注册表类别：{category}")
+    ids_key = f"registry_{registry_kind}_ids"
+    # Schema 1 snapshots only pinned the item registry.
+    if ids_key not in manifest and manifest.get("schema_version", 1) == 1 and category != "item":
+        return
+    expected = manifest.get(ids_key)
+    if (
+        not isinstance(expected, list)
+        or not expected
+        or any(not isinstance(item_id, str) or not item_id for item_id in expected)
+        or len(set(expected)) != len(expected)
+        or manifest.get(f"registry_{registry_kind}_count") != len(expected)
+    ):
+        raise BuildError(f"{REGISTRY_FILE} 的 {registry_kind} 注册表无效")
+    actual = {str(record.get("id", "")) for record in records}
+    missing = sorted(set(expected) - actual)
+    if missing:
+        raise BuildError(f"{RAW_FILES[category]} 缺少 {len(missing)} 个 {GAME_VERSION} 注册项：{missing}")
+
+
 # ---------------------------------------------------------------------------
 # 输入：从源数据裁剪出 mcdle_raw/
 # ---------------------------------------------------------------------------
@@ -172,6 +216,10 @@ def refresh_raw(source_dir: Path, raw_dir: Path = RAW_DIR) -> None:
     value_map = load_json(source_dir / SOURCE_VALUE_MAP)
     if not isinstance(value_map, dict) or not value_map:
         raise BuildError(f"源文件 {SOURCE_VALUE_MAP} 不是非空对象")
+
+    # Reject a concept-only refresh before it overwrites the completed raw files.
+    for category, rows in cleaned.items():
+        validate_registry_coverage(rows, raw_dir, category)
 
     for category, rows in cleaned.items():
         write_json(raw_dir / RAW_FILES[category], rows, indent=2, sort_keys=True)
@@ -328,6 +376,9 @@ def build_entries(
         name_en = str(name_en_fixes.get(entry_id) or record.get("title") or "").strip()
         if not name or not name_en:
             raise BuildError(f"{category}/{entry_id} 缺少中文名或英文名")
+        expected_length = sum(not char.isspace() for char in name)
+        if attrs_by_id[entry_id].get("name_length") != expected_length:
+            raise BuildError(f"{category}/{entry_id} 的 name_length 与显示名称不一致，请运行 enrich_raw_context.py")
         own_names = {normalize_name(entry_id), normalize_name(name), normalize_name(name_en)}
         aliases = _dedupe_aliases(aliases_map.get(entry_id), own_names=own_names, where=f"{category}/{entry_id}")
         tier = 1 if entry_id in tier1 else 2 if entry_id in tier2 else 3
@@ -446,6 +497,10 @@ def build_payload(raw_dir: Path = RAW_DIR) -> dict[str, Any]:
             records[category].append(record)
             attrs_by_id[category][entry_id] = normalize_attrs(category, record)
 
+    for category, rows in records.items():
+        validate_registry_coverage(rows, raw_dir, category)
+    manifest_path = raw_dir / REGISTRY_FILE
+    require_all_answers = manifest_path.is_file() and load_json(manifest_path).get("answer_policy") == "all_entries"
     release_order = build_release_order(records)
     categories: dict[str, Any] = {}
     for category, meta in CATEGORY_META.items():
@@ -454,6 +509,10 @@ def build_payload(raw_dir: Path = RAW_DIR) -> dict[str, Any]:
             raise BuildError(f"curation.json 缺少类别 {category}")
         fields = build_fields(category, list(attrs_by_id[category].values()), value_map)
         entries = build_entries(category, records[category], curated, attrs_by_id[category])
+        if require_all_answers:
+            excluded = [entry["id"] for entry in entries if not entry["answerable"]]
+            if excluded:
+                raise BuildError(f"完整词库要求所有条目可作答案，{category} 仍排除了：{excluded}")
         categories[category] = {
             "label": meta["label"],
             "icon": meta["icon"],

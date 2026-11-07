@@ -11,6 +11,8 @@ import json
 from dataclasses import dataclass
 from typing import Any
 
+from .hint_queries import MAX_QUESTION_LENGTH
+
 NAME = "mc_guess"
 
 # Chinese action words -> canonical action ids. English aliases are accepted too
@@ -20,6 +22,8 @@ ACTIONS = {
     "猜": "guess",
     "状态": "status",
     "提示": "hint",
+    "询问": "hint",
+    "问": "hint",
     "放弃": "giveup",
     "帮助": "help",
     "排行": "rank",
@@ -37,9 +41,12 @@ CATEGORIES = {
     "方块": "block",
     "物品": "item",
     "生物": "mob",
+    "实体": "mob",
     "block": "block",
     "item": "item",
     "mob": "mob",
+    "entity": "mob",
+    "entities": "mob",
 }
 
 DIFFICULTIES = {
@@ -51,13 +58,16 @@ DIFFICULTIES = {
     "hard": "hard",
 }
 
-MAX_NAME_LENGTH = 32
+MAX_NAME_LENGTH = 64
 
 DESCRIPTION = (
-    "玩《我的世界猜谜》（MCGuess）：开始一局、按名字猜方块/物品/生物、查看进度、要提示、放弃看答案、查看玩法。"
-    "用户说“开始猜方块/物品/生物”“我猜金块”“还剩几次”“给个提示”“放弃”“排行榜”“怎么玩”时调用。"
+    "玩《我的世界猜谜》（MCGuess）：开始一局、按名字猜方块/物品/生物或实体、查看进度、要提示、放弃看答案、查看玩法。"
+    "用户说“开始猜谜”“随机来一局”“开始猜方块/物品/生物”“我猜金块”“还剩几次”“给个提示”“放弃”“排行榜”“怎么玩”时调用。"
+    "开始时无需指定类型；用户未指定时省略 category，系统会随机选择一类。"
     "返回 JSON：status、text（可直接转述给用户的要点）、next（下一步建议）；"
     "不要编造猜测结果或属性反馈，结果以 text 为准。"
+    "用户询问维度、创造物品栏分类、名字字数、硬度等属性或“名字里有石吗”时，action=提示，question 填原问题。"
+    "提示支持指定属性、判断取值、比较数值、查连续文字及逐字含有情况；不清楚可问什么就 question=范围。"
 )
 
 # Chinese enum lists shown to the model; parse_args also accepts English aliases.
@@ -71,8 +81,8 @@ SCHEMA = {
         },
         "category": {
             "type": "string",
-            "enum": ["方块", "物品", "生物"],
-            "description": "action=开始 时的题目类型：方块/物品/生物；不填则由用户或默认值决定",
+            "enum": ["方块", "物品", "生物", "实体"],
+            "description": "action=开始 时可选的题目类型：方块/物品/生物（含全部实体）；实体与生物为同一题库，用户未指定时省略此项，系统随机选择一类，无需追问",
         },
         "difficulty": {
             "type": "string",
@@ -81,7 +91,12 @@ SCHEMA = {
         },
         "name": {
             "type": "string",
-            "description": "action=猜 时必须填：用户要猜的方块/物品/生物名字，只填一个名字（≤32 个字符），不要带整句话",
+            "description": "action=猜 时必须填：用户要猜的方块/物品/生物或实体名字，只填一个名字（≤64 个字符），不要带整句话",
+        },
+        "question": {
+            "type": "string",
+            "maxLength": MAX_QUESTION_LENGTH,
+            "description": "action=提示 时可选的问题，例如 维度、创造分类、字数、含有 石、名字里有石吗、硬度 大于 3、维度 下界、范围；省略则自动给出下一条属性线索。只问本局已列出的属性，不请求完整答案。",
         },
     },
     "required": ["action"],
@@ -108,6 +123,7 @@ class Request:
     category: str = ""
     difficulty: str = ""
     name: str = ""
+    question: str = ""
 
 
 def _text(args: dict[str, Any], key: str) -> str:
@@ -148,6 +164,12 @@ def parse_args(args: dict[str, Any]) -> Request:
                 f"name 只填一个名字，最长 {MAX_NAME_LENGTH} 个字符，不要把整句话塞进来"
             )
         return Request(action, category, name=name)
+
+    if action == "hint":
+        question = _text(args, "question")
+        if len(question) > MAX_QUESTION_LENGTH:
+            raise InvalidArgs(f"question 最长 {MAX_QUESTION_LENGTH} 个字符。")
+        return Request(action, question=question)
 
     return Request(action)
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import random
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -19,7 +20,7 @@ try:  # AstrBot >= 4.20 ships provider-facing content parts; older builds do not
 except ImportError:  # pragma: no cover - keep old AstrBot builds loadable
     _TextPart = None
 
-from . import core, llm_tool
+from . import core, hint_queries, llm_tool
 from . import card_views
 from .card_renderer import build_guess_card_html, build_help_card_html, build_rank_card_html, build_status_card_html
 from .catalog import CatalogError, Catalogue
@@ -30,7 +31,7 @@ from .renderer import LocalCardRenderer, LocalRenderSettings
 PLUGIN_NAME = "astrbot_plugin_mcguess"
 CATALOG_FILE = Path(__file__).parent / "data" / "catalog.json"
 
-FREE_TEXT_MAX_LENGTH = 16
+FREE_TEXT_MAX_LENGTH = 72  # Full registered names/IDs plus a short guess prefix.
 FOLLOW_UP_SECONDS = 600
 
 CATEGORY_WORDS = {
@@ -43,9 +44,12 @@ CATEGORY_WORDS = {
     "items": "item",
     "生物": "mob",
     "怪物": "mob",
+    "实体": "mob",
+    "實體": "mob",
     "mob": "mob",
     "mobs": "mob",
     "entity": "mob",
+    "entities": "mob",
 }
 
 DIFFICULTY_WORDS = {
@@ -84,6 +88,8 @@ COMMAND_ACTIONS = {
     "进度": "status",
     "status": "status",
     "提示": "hint",
+    "询问": "hint",
+    "问": "hint",
     "hint": "hint",
     "tip": "hint",
     "放弃": "giveup",
@@ -108,6 +114,8 @@ COMMAND_WORDS = {
     "猜个物品",
     "猜生物",
     "猜个生物",
+    "猜实体",
+    "猜个实体",
 }
 
 SHORTCUT_WORDS = {"状态": "status", "进度": "status", "提示": "hint", "放弃": "giveup"}
@@ -121,6 +129,7 @@ PLAYING_SYSTEM_PROMPT = (
     "用户只发一个方块/物品/生物名字、或让你猜某个名字时，调用 mc_guess 工具"
     "（action=\"猜\", name=用户说的名字），不要自己编造属性反馈或答案。"
     "用户问进度用 action=\"状态\"，要提示用 action=\"提示\"，放弃用 action=\"放弃\"。"
+    "询问维度、创造分类、字数、名字含字或具体属性时，action=\"提示\"，question 填原问题；不要自己判断真假。"
 )
 
 
@@ -184,7 +193,7 @@ class MCGuessPlugin(Star):
         self.config = config or {}
         self.data_dir = StarTools.get_data_dir(PLUGIN_NAME)
         self.max_attempts = self._int_config("max_attempts", 25, 3, 50)
-        hint_limit = self._int_config("hint_limit", 3, 0, 10)
+        hint_limit = self._int_config("hint_limit", 3, 0, 50)
         idle_timeout = self._int_config("idle_timeout_minutes", 30, 0, 24 * 60)
         self.games = GameService(
             self.data_dir,
@@ -197,7 +206,7 @@ class MCGuessPlugin(Star):
             self._build_render_settings(),
             local=self._build_local_renderer(),
             remote=self._remote_render,
-            logger=self.logger,
+            logger=logger,
         )
         self.catalogue: Catalogue | None = None
         try:
@@ -270,7 +279,7 @@ class MCGuessPlugin(Star):
             scale=self._float_config("render_scale", 1.5, 0.5, 2.0),
             browser_path=str(self._config("browser_path", "") or ""),
         )
-        return LocalCardRenderer(settings, logger=self.logger)
+        return LocalCardRenderer(settings, logger=logger)
 
     async def _remote_render(self, html: str) -> str:
         """Remote fallback: AstrBot's html_render (t2i service), returns an image URL."""
@@ -349,7 +358,7 @@ class MCGuessPlugin(Star):
     # ---- command handlers ----------------------------------------------
     @filter.command("mc猜", alias={"mcguess", "猜mc"})
     async def mc_guess(self, event: AstrMessageEvent):
-        """MC 猜方块/物品/生物：/mc猜 开始 方块 [简单|普通|困难]。"""
+        """MC 猜谜：/mc猜 开始 [方块|物品|生物|实体] [简单|普通|困难]。"""
         try:
             result = await self._dispatch(event, self._command_args(event.message_str))
         except CatalogError as exc:
@@ -368,7 +377,7 @@ class MCGuessPlugin(Star):
         arguments = self._command_args(event.message_str)
         yield self._emit(event, await self._safe_start(event, "item", arguments))
 
-    @filter.command("猜生物", alias={"猜个生物"})
+    @filter.command("猜生物", alias={"猜个生物", "猜实体", "猜个实体"})
     async def guess_mob(self, event: AstrMessageEvent):
         """直接开一局猜生物：/猜生物 [简单|普通|困难]。"""
         arguments = self._command_args(event.message_str)
@@ -399,7 +408,7 @@ class MCGuessPlugin(Star):
         if action == "status":
             return await self._action_status(event)
         if action == "hint":
-            return await self._action_hint(event)
+            return await self._action_hint(event, rest)
         if action == "giveup":
             return await self._action_give_up(event)
         if action == "rank":
@@ -439,16 +448,12 @@ class MCGuessPlugin(Star):
         catalogue = self._require_catalogue()
         tokens = (arguments or "").split()
         index = 0
-        if category_key is None:
-            if not tokens:
-                return ActionResult(
-                    "请指定要猜的类型：`/mc猜 开始 方块`、`/mc猜 开始 物品` 或 `/mc猜 开始 生物`。",
-                    error=True,
-                )
+        if category_key is None and tokens:
             category_key = CATEGORY_WORDS.get(tokens[0].casefold())
-            if category_key is None:
-                return ActionResult("类型只能是 方块 / 物品 / 生物。", error=True)
-            index = 1
+            if category_key is not None:
+                index = 1
+            elif tokens[0].casefold() not in DIFFICULTY_WORDS:
+                return ActionResult("类型只能是 方块 / 物品 / 生物 / 实体；也可省略类型随机开局。", error=True)
         difficulty = "normal"
         if index < len(tokens):
             difficulty = DIFFICULTY_WORDS.get(tokens[index].casefold())  # type: ignore[assignment]
@@ -456,7 +461,13 @@ class MCGuessPlugin(Star):
                 return ActionResult("难度只能是 简单 / 普通 / 困难。", error=True)
             index += 1
         if index < len(tokens):
-            return ActionResult("参数过多。用法：`/mc猜 开始 方块 [简单|普通|困难]`", error=True)
+            return ActionResult("参数过多。用法：`/mc猜 开始 [方块|物品|生物|实体] [简单|普通|困难]`", error=True)
+
+        if category_key is None:
+            available = [key for key in catalogue.category_keys() if catalogue.answer_pool(key, difficulty)]
+            if not available:
+                return ActionResult(f"题库在「{DIFFICULTY_LABELS[difficulty]}」难度下没有可用答案。", error=True)
+            category_key = random.choice(available)
 
         category = catalogue.category(category_key)
         require_finish = self._bool_config("require_finish_in_group", True) and self._is_group(event)
@@ -486,7 +497,7 @@ class MCGuessPlugin(Star):
             return ActionResult("请提供要猜的名字，例如：`/mc猜 猜 钻石矿石`。", error=True)
         state = await self.games.current(self._session_id(event))
         if state is None:
-            return ActionResult("本会话还没有对局，请先发送 `/mc猜 开始 方块`（或物品/生物）。", error=True)
+            return ActionResult("本会话还没有对局，请先发送 `/mc猜 开始` 随机开局，也可指定方块/物品/实体。", error=True)
         category = catalogue.category(str(state.get("category")))
         if state.get("status") != PLAYING:
             answer = self.games.answer_of(state, catalogue)
@@ -520,7 +531,7 @@ class MCGuessPlugin(Star):
         catalogue = self._require_catalogue()
         state = await self.games.current(self._session_id(event))
         if state is None:
-            return ActionResult("本会话还没有对局，发送 `/mc猜 开始 方块` 开一局吧。", error=True)
+            return ActionResult("本会话还没有对局，发送 `/mc猜 开始` 开一局吧。", error=True)
         category = catalogue.category(str(state.get("category")))
         difficulty = str(state.get("difficulty") or "normal")
         status = str(state.get("status") or PLAYING)
@@ -541,6 +552,17 @@ class MCGuessPlugin(Star):
             f"已猜：{guessed_text}"
         )
         answer = self.games.answer_of(state, catalogue)
+        if answer is not None:
+            entries = [category.entry(entry_id) for entry_id in guesses]
+            clues = core.summarize_clues(category.fields, [entry for entry in entries if entry], answer, hints)
+            known = [f"{item['label']}：{item['text']}" for item in clues if item["state"] != core.CLUE_NONE]
+            if known:
+                text += "\n已知属性：\n" + "\n".join(known)
+            if hints:
+                text += "\n已获提示：\n" + "\n".join(str(item.get("text") or "") for item in hints)
+            marked = [f"{entry['name']}：{core.format_name_characters(core.name_characters(entry['name'], answer['name']))}" for entry in entries if entry]
+            if marked:
+                text += "\n名称含字：\n" + "\n".join(marked)
         return await self._status_card(text, state, category, answer)
 
     async def _status_card(self, text: str, state: dict[str, Any], category, answer) -> ActionResult:
@@ -557,10 +579,19 @@ class MCGuessPlugin(Star):
             return ActionResult(text)
         return self._with_card(text, card)
 
-    async def _action_hint(self, event: AstrMessageEvent) -> ActionResult:
+    async def _action_hint(self, event: AstrMessageEvent, question: str = "") -> ActionResult:
         catalogue = self._require_catalogue()
+        if question.strip() in hint_queries.RANGE_WORDS:
+            state = await self.games.current(self._session_id(event))
+            if state is not None:
+                category = catalogue.category(str(state.get("category")))
+                return ActionResult(f"「{category.label}」提示范围\n{hint_queries.hint_range(category.fields)}")
+            return ActionResult("\n\n".join(
+                f"「{catalogue.category(key).label}」提示范围\n{hint_queries.hint_range(catalogue.category(key).fields)}"
+                for key in catalogue.category_keys()
+            ))
         try:
-            updated, hint, _answer = await self.games.hint(self._session_id(event), catalogue)
+            updated, hint, _answer = await self.games.hint(self._session_id(event), catalogue, question)
         except ValueError as exc:
             return ActionResult(str(exc), error=True)
         used = len(updated.get("hints") or [])
@@ -641,6 +672,7 @@ class MCGuessPlugin(Star):
             f"第 {row['attempt']}/{self.max_attempts} 次 · {category.label} · 你猜：{guess['name']}"
             + (f"（{guess['name_en']}）" if guess.get("name_en") else "")
         ]
+        lines.append("名称含字：" + core.format_name_characters(row.get("name_feedback") or core.name_characters(guess["name"], answer["name"])))
         for item in row["feedback"]:
             arrow = core.DIRECTION_ARROW.get(item.get("direction"), "")
             line = f"{core.STATUS_EMOJI[item['status']]} {item['label']}：{item['value']}"
@@ -722,6 +754,11 @@ class MCGuessPlugin(Star):
 
         # Without @ only exact names count; shortcuts like 放弃 still need @ so chatter can't end a round.
         shortcut = None if quiet else SHORTCUT_WORDS.get(text)
+        if not quiet:
+            head, question = _split_first(text)
+            if head in {"提示", "询问", "问"} and question:
+                yield self._emit(event, await self._action_hint(event, question))
+                return
         if shortcut == "status":
             yield self._emit(event, await self._action_status(event))
             return
@@ -792,20 +829,13 @@ class MCGuessPlugin(Star):
         if request.action == "help":
             return await self._action_help()
         if request.action == "start":
-            if not request.category:
-                if request.difficulty:
-                    return ActionResult(
-                        "请指定要猜的类型：方块 / 物品 / 生物。例如「开始猜方块」「换个物品局」。",
-                        error=True,
-                    )
-                return await self._action_start(event, None, "")
-            return await self._action_start(event, request.category, request.difficulty)
+            return await self._action_start(event, request.category or None, request.difficulty)
         if request.action == "guess":
             return await self._action_guess(event, request.name)
         if request.action == "status":
             return await self._action_status(event)
         if request.action == "hint":
-            return await self._action_hint(event)
+            return await self._action_hint(event, request.question)
         if request.action == "giveup":
             return await self._action_give_up(event)
         if request.action == "rank":
@@ -849,7 +879,7 @@ class MCGuessPlugin(Star):
         last_used = self._last_tool_use.get(session_id)
         if last_used is not None and time.monotonic() - last_used < FOLLOW_UP_SECONDS:
             return True, playing
-        if text and any(word in text for word in ("猜", "方块", "物品", "生物", "mc", "MC", "我的世界")):
+        if text and any(word in text for word in ("猜", "方块", "物品", "生物", "mc", "MC", "我的世界", "随机来一局", "随机开一局")):
             return True, playing
         if playing and 0 < len(text) <= FREE_TEXT_MAX_LENGTH:
             return True, playing
@@ -860,8 +890,8 @@ class MCGuessPlugin(Star):
         hint_limit = self.games.hint_limit
         return [
             {
-                "command": "/mc猜 开始 方块 [简单|普通|困难]",
-                "description": "开一局猜方块；物品、生物同理。也可用 /猜方块、/猜物品、/猜生物。",
+                "command": "/mc猜 开始 [简单|普通|困难]",
+                "description": "不填类型随机开局；指定类型如 /mc猜 开始 方块，也可用 /猜方块、/猜物品、/猜实体。",
                 "tag": "",
             },
             {
@@ -870,8 +900,8 @@ class MCGuessPlugin(Star):
                 "tag": "",
             },
             {
-                "command": "/mc猜 提示",
-                "description": f"免费提示，每局 {hint_limit} 次，揭示答案的一条属性。",
+                "command": "/mc猜 提示 [属性或问题]",
+                "description": f"每局 {hint_limit} 次：维度、创造分类、字数、含有 石、硬度 > 3；用「提示 范围」查看可问属性。",
                 "tag": "",
             },
             {
@@ -899,10 +929,10 @@ class MCGuessPlugin(Star):
     def _help_text(self) -> str:
         return (
             "《MC 猜谜》玩法\n"
-            "1. `/mc猜 开始 方块|物品|生物 [简单|普通|困难]` 开局，也可用 `/猜方块`、`/猜物品`、`/猜生物`。\n"
+            "1. `/mc猜 开始` 随机选一类开局，可直接加难度；指定类型如 `/mc猜 开始 方块`（或物品/生物/实体），也可用 `/猜方块`、`/猜物品`、`/猜实体`。\n"
             f"2. 每局最多 {self.max_attempts} 次；每次猜一个名字，机器人按属性给反馈。\n"
             "3. 🟩 完全一致　🟨 部分符合/数值接近　⬜ 不符　⬆⬇ 答案更大/更小。\n"
-            f"4. 每局有 {self.games.hint_limit} 次免费提示：`/mc猜 提示`。\n"
+            f"4. 每局有 {self.games.hint_limit} 次提示，可用 `/mc猜 提示 维度`、`/mc猜 提示 字数`、`/mc猜 提示 含有 石`；`/mc猜 提示 范围` 查看全部可问属性。\n"
             "5. 对局中可直接发名字（群里可免 @，也可用「我猜X」）；`/mc猜 状态`、`/mc猜 放弃`、`/mc猜 排行`。\n"
-            "名字支持中文名、英文名、ID 和常见别名。"
+            "名字支持中文名、英文名、ID 和常见别名；名称逐字 🟩 表示答案含该字、⬜ 表示不含，不代表字的位置或次数。"
         )

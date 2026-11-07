@@ -10,7 +10,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from . import core
+from . import core, hint_queries
 from .catalog import Catalogue, Category
 
 PLAYING = "playing"
@@ -265,6 +265,7 @@ class GameService:
         self,
         session_id: str,
         catalogue: Catalogue,
+        question: str = "",
     ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         now = time.time()
         async with self._session_lock(session_id):
@@ -281,13 +282,20 @@ class GameService:
             if state.get("status") != PLAYING:
                 raise ValueError(self._ended_message(state, answer))
             hints = list(state.get("hints") or [])
-            hint = core.build_hint(
-                answer,
-                category.fields,
-                category.hint_fields,
-                [str(item.get("field")) for item in hints],
-                limit=self.hint_limit,
-            )
+            if question.strip():
+                hint = hint_queries.build_question_hint(answer, category.fields, question)
+                if any(str(item.get("id") or item.get("field")) == hint["id"] for item in hints):
+                    return state, hint, answer
+                if len(hints) >= self.hint_limit:
+                    raise ValueError("本局提示次数已经用完了。")
+            else:
+                hint = core.build_hint(
+                    answer,
+                    category.fields,
+                    category.hint_fields,
+                    [str(item.get("id") or item.get("field")) for item in hints],
+                    limit=self.hint_limit,
+                )
             hints.append(hint)
             updated = {**state, "hints": hints, "updatedAt": now}
             await self._write(session_id, updated)
