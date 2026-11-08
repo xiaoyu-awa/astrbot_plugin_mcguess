@@ -390,5 +390,10 @@
     "Zooming out": "缩放",
     "combat": "战斗",
     "none": "无"
+  },
+  "variants": {
+    "color": "颜色",
+    "none": "无",
+    "type": "品种"
   }
 }

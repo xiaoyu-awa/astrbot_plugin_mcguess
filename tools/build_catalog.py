@@ -60,19 +60,19 @@ CATEGORY_META: dict[str, dict[str, Any]] = {
     "block": {
         "label": "方块",
         "icon": "🧱",
-        "hint_fields": ["dimensions", "inventory_categories", "name_length", "tool", "hardness", "transparent"],
+        "hint_fields": ["dimensions", "inventory_categories", "name_length", "variants", "tool", "hardness", "transparent"],
         "tier1_min": 60,
     },
     "item": {
         "label": "物品",
         "icon": "🎒",
-        "hint_fields": ["dimensions", "inventory_categories", "name_length", "rarity", "obtaining", "renewable"],
+        "hint_fields": ["dimensions", "inventory_categories", "name_length", "variants", "rarity", "obtaining", "renewable"],
         "tier1_min": 50,
     },
     "mob": {
         "label": "生物/实体",
         "icon": "🐷",
-        "hint_fields": ["dimensions", "name_length", "behavior", "health", "classification"],
+        "hint_fields": ["dimensions", "name_length", "variants", "behavior", "health", "classification"],
         "tier1_min": 35,
     },
 }
@@ -83,6 +83,7 @@ FIELD_SPECS: dict[str, list[dict[str, Any]]] = {
         {"key": "dimensions", "label": "来源维度", "kind": "set"},
         {"key": "inventory_categories", "label": "创造物品栏分类", "kind": "set"},
         {"key": "name_length", "label": "名称字数", "kind": "number", "tolerance": 0, "unit": "字"},
+        {"key": "variants", "label": "变体", "kind": "set"},
         {"key": "hardness", "label": "硬度", "kind": "number", "tolerance": 0.5},
         {"key": "blast_resistance", "label": "爆炸抗性", "kind": "number", "tolerance_ratio": 0.25},
         {"key": "tool", "label": "工具", "kind": "enum"},
@@ -98,6 +99,7 @@ FIELD_SPECS: dict[str, list[dict[str, Any]]] = {
     "item": [
         {"key": "dimensions", "label": "来源维度", "kind": "set"},
         {"key": "name_length", "label": "名称字数", "kind": "number", "tolerance": 0, "unit": "字"},
+        {"key": "variants", "label": "变体", "kind": "set"},
         {"key": "rarity", "label": "稀有度", "kind": "enum"},
         {"key": "stackable", "label": "堆叠数量", "kind": "number", "tolerance": 0},
         {"key": "renewable", "label": "可再生性", "kind": "enum"},
@@ -112,6 +114,7 @@ FIELD_SPECS: dict[str, list[dict[str, Any]]] = {
         {"key": "dimensions", "label": "来源维度", "kind": "set"},
         {"key": "inventory_categories", "label": "创造物品栏分类", "kind": "set"},
         {"key": "name_length", "label": "名称字数", "kind": "number", "tolerance": 0, "unit": "字"},
+        {"key": "variants", "label": "变体", "kind": "set"},
         {"key": "health", "label": "生命值", "kind": "number", "tolerance": 2, "zero_label": "不适用"},
         {"key": "height", "label": "高度", "kind": "number", "tolerance": 0.1},
         {"key": "behavior", "label": "行为", "kind": "set"},
@@ -126,6 +129,7 @@ TRI_STATE_VALUES = ("no", "partial", "yes")
 TRI_STATE_SIMILAR = [["no", "partial"], ["yes", "partial"]]
 TOOL_SEPARATOR = ", "
 RARITY_ADJACENT = [("common", "uncommon"), ("uncommon", "rare"), ("rare", "epic")]
+VARIANT_LABELS = {"color": "颜色", "type": "品种", "none": "无"}
 
 _VERSION_PATTERN = re.compile(r"^(?:(pre-alpha)|(Alpha|Beta) (\d+(?:\.\d+)*)|(\d+(?:\.\d+)*))$")
 
@@ -275,6 +279,11 @@ def normalize_attrs(category: str, record: dict[str, Any]) -> dict[str, Any]:
             attrs[key] = _as_number(value, where)
         elif spec["kind"] == "set":
             attrs[key] = _as_string_list(value, where)
+            if key == "variants":
+                labels = attrs[key]
+                if (not labels or len(labels) != len(set(labels)) or set(labels) - set(VARIANT_LABELS)
+                        or ("none" in labels and len(labels) != 1)):
+                    raise BuildError(f"{where} 只能使用颜色/品种标签，或单独使用无")
         elif key in TRI_STATE_FIELDS:
             attrs[key] = _as_tri_state(value, where)
         else:
@@ -318,6 +327,8 @@ def build_fields(category: str, attrs_list: list[dict[str, Any]], value_map: dic
             mapping = value_map.get(key)
             if not isinstance(mapping, dict):
                 raise BuildError(f"value_map.json 缺少字段 {key} 的取值映射")
+            if key == "variants" and mapping != VARIANT_LABELS:
+                raise BuildError("variants 只能显示颜色、品种、无，不得加入具体变体名称或细分类别")
             missing = sorted(used - set(mapping))
             if missing:
                 raise BuildError(f"{category}.{key} 存在没有中文译名的取值：{missing}")

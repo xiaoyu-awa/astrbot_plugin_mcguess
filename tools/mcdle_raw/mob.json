@@ -22,7 +22,10 @@
       "command",
       "placement"
     ],
-    "title": "Acacia Boat"
+    "title": "Acacia Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -47,7 +50,10 @@
       "command",
       "placement"
     ],
-    "title": "Acacia Boat with Chest"
+    "title": "Acacia Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -72,7 +78,10 @@
       "structure",
       "duplication"
     ],
-    "title": "Allay"
+    "title": "Allay",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -97,7 +106,10 @@
       "command",
       "projectile"
     ],
-    "title": "Area Effect Cloud"
+    "title": "Area Effect Cloud",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -122,7 +134,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Armadillo"
+    "title": "Armadillo",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -147,7 +162,10 @@
       "command",
       "placement"
     ],
-    "title": "Armor Stand"
+    "title": "Armor Stand",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -173,7 +191,10 @@
       "command",
       "projectile"
     ],
-    "title": "Arrow"
+    "title": "Arrow",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -199,7 +220,11 @@
       "biome",
       "breeding"
     ],
-    "title": "Axolotl"
+    "title": "Axolotl",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -224,7 +249,10 @@
       "command",
       "placement"
     ],
-    "title": "Bamboo Raft with Chest"
+    "title": "Bamboo Raft with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -249,7 +277,10 @@
       "command",
       "placement"
     ],
-    "title": "Bamboo Raft"
+    "title": "Bamboo Raft",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -273,7 +304,10 @@
     "spawn": [
       "light_level"
     ],
-    "title": "Bat"
+    "title": "Bat",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -299,7 +333,10 @@
       "block",
       "breeding"
     ],
-    "title": "Bee"
+    "title": "Bee",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -324,7 +361,10 @@
       "command",
       "placement"
     ],
-    "title": "Birch Boat"
+    "title": "Birch Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -349,7 +389,10 @@
       "command",
       "placement"
     ],
-    "title": "Birch Boat with Chest"
+    "title": "Birch Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -374,7 +417,10 @@
       "structure",
       "spawner"
     ],
-    "title": "Blaze"
+    "title": "Blaze",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -399,7 +445,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Block Display"
+    "title": "Block Display",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -424,7 +473,10 @@
       "biome",
       "spawner"
     ],
-    "title": "Bogged"
+    "title": "Bogged",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -448,7 +500,10 @@
     "spawn": [
       "spawner"
     ],
-    "title": "Breeze"
+    "title": "Breeze",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -473,7 +528,10 @@
       "command",
       "projectile"
     ],
-    "title": "Breeze Wind Charge"
+    "title": "Breeze Wind Charge",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -499,7 +557,10 @@
       "breeding",
       "biome"
     ],
-    "title": "Camel"
+    "title": "Camel",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -524,7 +585,11 @@
       "structure",
       "breeding"
     ],
-    "title": "Cat"
+    "title": "Cat",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -549,7 +614,10 @@
     "spawn": [
       "spawner"
     ],
-    "title": "Cave Spider"
+    "title": "Cave Spider",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -574,7 +642,10 @@
       "command",
       "placement"
     ],
-    "title": "Cherry Boat"
+    "title": "Cherry Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -599,7 +670,10 @@
       "command",
       "placement"
     ],
-    "title": "Cherry Boat with Chest"
+    "title": "Cherry Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -624,7 +698,10 @@
       "command",
       "placement"
     ],
-    "title": "Minecart with Chest"
+    "title": "Minecart with Chest",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -651,7 +728,10 @@
       "projectile",
       "breeding"
     ],
-    "title": "Chicken"
+    "title": "Chicken",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -676,7 +756,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Cod"
+    "title": "Cod",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -702,7 +785,10 @@
       "command",
       "placement"
     ],
-    "title": "Minecart with Command Block"
+    "title": "Minecart with Command Block",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -726,7 +812,10 @@
     "spawn": [
       "summon"
     ],
-    "title": "Copper Golem"
+    "title": "Copper Golem",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -753,7 +842,10 @@
       "breeding",
       "structure"
     ],
-    "title": "Cow"
+    "title": "Cow",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -778,7 +870,10 @@
       "block",
       "summon"
     ],
-    "title": "Creaking"
+    "title": "Creaking",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -802,7 +897,10 @@
     "spawn": [
       "light_level"
     ],
-    "title": "Creeper"
+    "title": "Creeper",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -827,7 +925,10 @@
       "command",
       "placement"
     ],
-    "title": "Dark Oak Boat"
+    "title": "Dark Oak Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -852,7 +953,10 @@
       "command",
       "placement"
     ],
-    "title": "Dark Oak Boat with Chest"
+    "title": "Dark Oak Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -878,7 +982,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Dolphin"
+    "title": "Dolphin",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -903,7 +1010,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Donkey"
+    "title": "Donkey",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -928,7 +1038,10 @@
       "command",
       "projectile"
     ],
-    "title": "Dragon Fireball"
+    "title": "Dragon Fireball",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -957,7 +1070,10 @@
       "structure",
       "reinforcements"
     ],
-    "title": "Drowned"
+    "title": "Drowned",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -982,7 +1098,10 @@
       "command",
       "projectile"
     ],
-    "title": "Thrown Egg"
+    "title": "Thrown Egg",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1006,7 +1125,10 @@
     "spawn": [
       "structure"
     ],
-    "title": "Elder Guardian"
+    "title": "Elder Guardian",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1032,7 +1154,10 @@
       "command",
       "placement"
     ],
-    "title": "End Crystal"
+    "title": "End Crystal",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1057,7 +1182,10 @@
       "structure",
       "summon"
     ],
-    "title": "Ender Dragon"
+    "title": "Ender Dragon",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1082,7 +1210,10 @@
       "command",
       "projectile"
     ],
-    "title": "Thrown Ender Pearl"
+    "title": "Thrown Ender Pearl",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1109,7 +1240,10 @@
       "light_level",
       "biome"
     ],
-    "title": "Enderman"
+    "title": "Enderman",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1133,7 +1267,10 @@
     "spawn": [
       "projectile"
     ],
-    "title": "Endermite"
+    "title": "Endermite",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1159,7 +1296,10 @@
       "raids",
       "jockey"
     ],
-    "title": "Evoker"
+    "title": "Evoker",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1184,7 +1324,10 @@
       "command",
       "projectile"
     ],
-    "title": "Evoker Fangs"
+    "title": "Evoker Fangs",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1209,7 +1352,10 @@
       "command",
       "projectile"
     ],
-    "title": "Thrown Bottle o' Enchanting"
+    "title": "Thrown Bottle o' Enchanting",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1236,7 +1382,10 @@
       "command",
       "drops"
     ],
-    "title": "Experience Orb"
+    "title": "Experience Orb",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1261,7 +1410,10 @@
       "command",
       "projectile"
     ],
-    "title": "Eye of Ender"
+    "title": "Eye of Ender",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1287,7 +1439,10 @@
       "command",
       "gravity"
     ],
-    "title": "Falling Block"
+    "title": "Falling Block",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1312,7 +1467,10 @@
       "command",
       "projectile"
     ],
-    "title": "Fireball"
+    "title": "Fireball",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1337,7 +1495,10 @@
       "command",
       "projectile"
     ],
-    "title": "Firework Rocket"
+    "title": "Firework Rocket",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1361,7 +1522,10 @@
     "spawn": [
       "fishing"
     ],
-    "title": "Fishing Bobber"
+    "title": "Fishing Bobber",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1387,7 +1551,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Fox"
+    "title": "Fox",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -1412,7 +1579,10 @@
       "biome",
       "conversion"
     ],
-    "title": "Frog"
+    "title": "Frog",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -1437,7 +1607,10 @@
       "command",
       "placement"
     ],
-    "title": "Minecart with Furnace"
+    "title": "Minecart with Furnace",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1461,7 +1634,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Ghast"
+    "title": "Ghast",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1486,7 +1662,10 @@
       "light_level",
       "command"
     ],
-    "title": "Giant"
+    "title": "Giant",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1511,7 +1690,10 @@
       "command",
       "placement"
     ],
-    "title": "Glow Item Frame"
+    "title": "Glow Item Frame",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1536,7 +1718,10 @@
     "spawn": [
       "light_level"
     ],
-    "title": "Glow Squid"
+    "title": "Glow Squid",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1561,7 +1746,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Goat"
+    "title": "Goat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -1585,7 +1773,10 @@
     "spawn": [
       "structure"
     ],
-    "title": "Guardian"
+    "title": "Guardian",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1609,7 +1800,10 @@
     "spawn": [
       "block"
     ],
-    "title": "Happy Ghast"
+    "title": "Happy Ghast",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1635,7 +1829,10 @@
       "structure",
       "breeding"
     ],
-    "title": "Hoglin"
+    "title": "Hoglin",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1660,7 +1857,10 @@
       "command",
       "placement"
     ],
-    "title": "Minecart with Hopper"
+    "title": "Minecart with Hopper",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1686,7 +1886,11 @@
       "structure",
       "breeding"
     ],
-    "title": "Horse"
+    "title": "Horse",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -1714,7 +1918,10 @@
       "light_level",
       "reinforcements"
     ],
-    "title": "Husk"
+    "title": "Husk",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1738,7 +1945,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Illusioner"
+    "title": "Illusioner",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1762,7 +1972,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Interaction"
+    "title": "Interaction",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1788,7 +2001,10 @@
       "structure",
       "summon"
     ],
-    "title": "Iron Golem"
+    "title": "Iron Golem",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1815,7 +2031,10 @@
       "command",
       "drops"
     ],
-    "title": "Item"
+    "title": "Item",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1840,7 +2059,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Item Display"
+    "title": "Item Display",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1866,7 +2088,10 @@
       "command",
       "placement"
     ],
-    "title": "Item Frame"
+    "title": "Item Frame",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1891,7 +2116,10 @@
       "command",
       "placement"
     ],
-    "title": "Jungle Boat"
+    "title": "Jungle Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -1916,7 +2144,10 @@
       "command",
       "placement"
     ],
-    "title": "Jungle Boat with Chest"
+    "title": "Jungle Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -1941,7 +2172,10 @@
       "command",
       "placement"
     ],
-    "title": "Leash Knot"
+    "title": "Leash Knot",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1966,7 +2200,10 @@
       "command",
       "lightning"
     ],
-    "title": "Lightning Bolt"
+    "title": "Lightning Bolt",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -1991,7 +2228,10 @@
       "command",
       "projectile"
     ],
-    "title": "Lingering Potion"
+    "title": "Lingering Potion",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2017,7 +2257,11 @@
       "breeding",
       "overworld"
     ],
-    "title": "Llama"
+    "title": "Llama",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2042,7 +2286,10 @@
       "command",
       "projectile"
     ],
-    "title": "Llama Spit"
+    "title": "Llama Spit",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2068,7 +2315,10 @@
       "spawner",
       "structure"
     ],
-    "title": "Magma Cube"
+    "title": "Magma Cube",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2093,7 +2343,10 @@
       "command",
       "placement"
     ],
-    "title": "Mangrove Boat"
+    "title": "Mangrove Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2118,7 +2371,10 @@
       "command",
       "placement"
     ],
-    "title": "Mangrove Boat with Chest"
+    "title": "Mangrove Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2143,7 +2399,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Mannequin"
+    "title": "Mannequin",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2167,7 +2426,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Marker"
+    "title": "Marker",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2192,7 +2454,10 @@
       "command",
       "placement"
     ],
-    "title": "Minecart"
+    "title": "Minecart",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2217,7 +2482,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Mooshroom"
+    "title": "Mooshroom",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2241,7 +2509,10 @@
     "spawn": [
       "breeding"
     ],
-    "title": "Mule"
+    "title": "Mule",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2266,7 +2537,10 @@
       "command",
       "placement"
     ],
-    "title": "Oak Boat"
+    "title": "Oak Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2291,7 +2565,10 @@
       "command",
       "placement"
     ],
-    "title": "Oak Boat with Chest"
+    "title": "Oak Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2316,7 +2593,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Ocelot"
+    "title": "Ocelot",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2341,7 +2621,10 @@
       "command",
       "trial_spawner"
     ],
-    "title": "Ominous Item Spawner"
+    "title": "Ominous Item Spawner",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2366,7 +2649,10 @@
       "command",
       "placement"
     ],
-    "title": "Painting"
+    "title": "Painting",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2391,7 +2677,10 @@
       "command",
       "placement"
     ],
-    "title": "Pale Oak Boat"
+    "title": "Pale Oak Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2416,7 +2705,10 @@
       "command",
       "placement"
     ],
-    "title": "Pale Oak Boat with Chest"
+    "title": "Pale Oak Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2441,7 +2733,10 @@
       "biome",
       "breeding"
     ],
-    "title": "Panda"
+    "title": "Panda",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2465,7 +2760,11 @@
     "spawn": [
       "biome"
     ],
-    "title": "Parrot"
+    "title": "Parrot",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2490,7 +2789,10 @@
       "summon",
       "light_level"
     ],
-    "title": "Phantom"
+    "title": "Phantom",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2516,7 +2818,10 @@
       "breeding",
       "structure"
     ],
-    "title": "Pig"
+    "title": "Pig",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2542,7 +2847,10 @@
       "biome",
       "structure"
     ],
-    "title": "Piglin"
+    "title": "Piglin",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2566,7 +2874,10 @@
     "spawn": [
       "structure"
     ],
-    "title": "Piglin Brute"
+    "title": "Piglin Brute",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2594,7 +2905,10 @@
       "raids",
       "jockey"
     ],
-    "title": "Pillager"
+    "title": "Pillager",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2618,7 +2932,10 @@
     "spawn": [
       "player_login"
     ],
-    "title": "Player"
+    "title": "Player",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2643,7 +2960,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Polar Bear"
+    "title": "Polar Bear",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2669,7 +2989,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Pufferfish"
+    "title": "Pufferfish",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2695,7 +3018,11 @@
       "biome",
       "breeding"
     ],
-    "title": "Rabbit"
+    "title": "Rabbit",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -2719,7 +3046,10 @@
     "spawn": [
       "raids"
     ],
-    "title": "Ravager"
+    "title": "Ravager",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2744,7 +3074,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Salmon"
+    "title": "Salmon",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2770,7 +3103,10 @@
       "breeding",
       "structure"
     ],
-    "title": "Sheep"
+    "title": "Sheep",
+    "variants": [
+      "color"
+    ]
   },
   {
     "behavior": [
@@ -2795,7 +3131,10 @@
       "structure",
       "duplication"
     ],
-    "title": "Shulker"
+    "title": "Shulker",
+    "variants": [
+      "color"
+    ]
   },
   {
     "behavior": [
@@ -2820,7 +3159,10 @@
       "command",
       "projectile"
     ],
-    "title": "Shulker Bullet"
+    "title": "Shulker Bullet",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2846,7 +3188,10 @@
       "spawner",
       "magic"
     ],
-    "title": "Silverfish"
+    "title": "Silverfish",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2876,7 +3221,10 @@
       "jockey",
       "structure"
     ],
-    "title": "Skeleton"
+    "title": "Skeleton",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2901,7 +3249,10 @@
     "spawn": [
       "lightning"
     ],
-    "title": "Skeleton Horse"
+    "title": "Skeleton Horse",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2927,7 +3278,10 @@
       "magic",
       "spawner"
     ],
-    "title": "Slime"
+    "title": "Slime",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2952,7 +3306,10 @@
       "command",
       "projectile"
     ],
-    "title": "Small Fireball"
+    "title": "Small Fireball",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -2977,7 +3334,10 @@
       "breeding",
       "hatching"
     ],
-    "title": "Sniffer"
+    "title": "Sniffer",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3001,7 +3361,10 @@
     "spawn": [
       "summon"
     ],
-    "title": "Snow Golem"
+    "title": "Snow Golem",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3026,7 +3389,10 @@
       "command",
       "projectile"
     ],
-    "title": "Snowball"
+    "title": "Snowball",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3051,7 +3417,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Minecart with Monster Spawner"
+    "title": "Minecart with Monster Spawner",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3076,7 +3445,10 @@
       "command",
       "projectile"
     ],
-    "title": "Spectral Arrow"
+    "title": "Spectral Arrow",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3103,7 +3475,10 @@
       "spawner",
       "jockey"
     ],
-    "title": "Spider"
+    "title": "Spider",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3128,7 +3503,10 @@
       "command",
       "projectile"
     ],
-    "title": "Splash Potion"
+    "title": "Splash Potion",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3153,7 +3531,10 @@
       "command",
       "placement"
     ],
-    "title": "Spruce Boat"
+    "title": "Spruce Boat",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3178,7 +3559,10 @@
       "command",
       "placement"
     ],
-    "title": "Spruce Boat with Chest"
+    "title": "Spruce Boat with Chest",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3203,7 +3587,10 @@
     "spawn": [
       "biome"
     ],
-    "title": "Squid"
+    "title": "Squid",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3230,7 +3617,10 @@
       "conversion",
       "spawner"
     ],
-    "title": "Stray"
+    "title": "Stray",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3256,7 +3646,10 @@
       "breeding",
       "jockey"
     ],
-    "title": "Strider"
+    "title": "Strider",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3281,7 +3674,10 @@
     "spawn": [
       "hatching"
     ],
-    "title": "Tadpole"
+    "title": "Tadpole",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3306,7 +3702,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Text Display"
+    "title": "Text Display",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3331,7 +3730,10 @@
       "command",
       "ignition"
     ],
-    "title": "Primed TNT"
+    "title": "Primed TNT",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3356,7 +3758,10 @@
       "command",
       "placement"
     ],
-    "title": "Minecart with TNT"
+    "title": "Minecart with TNT",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3381,7 +3786,11 @@
       "wandering_trader",
       "command"
     ],
-    "title": "Trader Llama"
+    "title": "Trader Llama",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3406,7 +3815,10 @@
       "command",
       "projectile"
     ],
-    "title": "Trident"
+    "title": "Trident",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3431,7 +3843,11 @@
     "spawn": [
       "biome"
     ],
-    "title": "Tropical Fish"
+    "title": "Tropical Fish",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3458,7 +3874,10 @@
       "breeding",
       "hatching"
     ],
-    "title": "Turtle"
+    "title": "Turtle",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3482,7 +3901,10 @@
     "spawn": [
       "summon"
     ],
-    "title": "Vex"
+    "title": "Vex",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3508,7 +3930,10 @@
       "breeding",
       "conversion"
     ],
-    "title": "Villager"
+    "title": "Villager",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3534,7 +3959,10 @@
       "raids",
       "jockey"
     ],
-    "title": "Vindicator"
+    "title": "Vindicator",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3558,7 +3986,10 @@
     "spawn": [
       "overworld"
     ],
-    "title": "Wandering Trader"
+    "title": "Wandering Trader",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3583,7 +4014,10 @@
       "block",
       "summon"
     ],
-    "title": "Warden"
+    "title": "Warden",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3608,7 +4042,10 @@
       "command",
       "projectile"
     ],
-    "title": "Wind Charge"
+    "title": "Wind Charge",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3636,7 +4073,10 @@
       "conversion",
       "lightning"
     ],
-    "title": "Witch"
+    "title": "Witch",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3661,7 +4101,10 @@
     "spawn": [
       "summon"
     ],
-    "title": "Wither"
+    "title": "Wither",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3685,7 +4128,10 @@
     "spawn": [
       "structure"
     ],
-    "title": "Wither Skeleton"
+    "title": "Wither Skeleton",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3710,7 +4156,10 @@
       "command",
       "projectile"
     ],
-    "title": "Wither Skull"
+    "title": "Wither Skull",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3736,7 +4185,11 @@
       "biome",
       "breeding"
     ],
-    "title": "Wolf"
+    "title": "Wolf",
+    "variants": [
+      "color",
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3760,7 +4213,10 @@
     "spawn": [
       "conversion"
     ],
-    "title": "Zoglin"
+    "title": "Zoglin",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3789,7 +4245,10 @@
       "reinforcements",
       "sieges"
     ],
-    "title": "Zombie"
+    "title": "Zombie",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3814,7 +4273,10 @@
     "spawn": [
       "command"
     ],
-    "title": "Zombie Horse"
+    "title": "Zombie Horse",
+    "variants": [
+      "none"
+    ]
   },
   {
     "behavior": [
@@ -3842,7 +4304,10 @@
       "jockey",
       "reinforcements"
     ],
-    "title": "Zombie Villager"
+    "title": "Zombie Villager",
+    "variants": [
+      "type"
+    ]
   },
   {
     "behavior": [
@@ -3872,6 +4337,9 @@
       "reinforcements",
       "block"
     ],
-    "title": "Zombified Piglin"
+    "title": "Zombified Piglin",
+    "variants": [
+      "none"
+    ]
   }
 ]

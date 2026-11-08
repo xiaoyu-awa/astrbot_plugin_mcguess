@@ -14,6 +14,7 @@ ALIASES = {
     "dimensions": ["维度", "来源维度", "自然生成维度", "在哪个维度", "在哪个世界", "世界"],
     "inventory_categories": ["创造物品栏分类", "创造物品栏", "创造分类", "物品栏分类", "库存类别"],
     "name_length": ["名称字数", "名字字数", "名字长度", "名称长度", "多少个字", "几个字", "字数"],
+    "variants": ["变体", "变体类型", "变种", "变种类型"],
     "first_char": ["名称首字", "名字首字", "第一个字", "首字", "首字是什么"],
     "hardness": ["硬度"],
     "blast_resistance": ["爆炸抗性", "抗爆性", "抗爆"],
@@ -38,6 +39,7 @@ ALIASES = {
     "classification": ["生物分类", "实体分类", "分类"],
 }
 _VALUE_ALIASES = {
+    "variants": {"颜色变体": "color", "颜色变种": "color", "种类": "type", "品种变体": "type", "品种变种": "type", "没有": "none", "无变体": "none"},
     "dimensions": {"地狱": "nether", "地獄": "nether", "地表": "overworld", "主世界": "overworld", "下界": "nether", "末地": "end"},
     "inventory_categories": {"建筑": "building_blocks", "红石": "redstone_blocks", "红石相关方块": "redstone_blocks", "自然": "natural_blocks", "功能": "functional_blocks", "功能性方块": "functional_blocks", "染色": "colored_blocks", "战斗": "combat", "战斗物品": "combat", "食物": "food_and_drinks", "食物与饮料": "food_and_drinks", "材料": "ingredients", "工具": "tools_and_utilities", "刷怪蛋": "spawn_eggs", "生成蛋": "spawn_eggs", "管理员": "operator_utilities", "管理员工具": "operator_utilities"},
 }
@@ -60,8 +62,8 @@ def hint_range(fields: list[dict[str, Any]]) -> str:
     labels = list(dict.fromkeys([str(field.get("label") or field["key"]) for field in fields] + ["名称字数", "名称首字", "名字含字"]))
     return (
         "可以询问：" + "、".join(labels) + "。\n"
-        "指定属性：`/mc猜 提示 维度`、`/mc猜 提示 字数`。\n"
-        "判断取值：`/mc猜 提示 维度 下界`、`/mc猜 提示 创造分类 建筑方块`。\n"
+        "指定属性：`/mc猜 提示 维度`、`/mc猜 提示 字数`、`/mc猜 提示 变体`。\n"
+        "判断取值：`/mc猜 提示 维度 下界`、`/mc猜 提示 变体 颜色`、`/mc猜 提示 创造分类 建筑方块`。\n"
         "比较数值：`/mc猜 提示 字数 大于 3`（支持 >、≥、<、≤、=、≠）。\n"
         "查询文字：`/mc猜 提示 含有 石`；多个字会同时标出每个字是否出现，并判断整段文字是否连续出现。\n"
         "每个新问题使用一次提示；重复问题、无效问题和查看范围不扣次数。字数不计空白、包含标点；含字标记不表示位置或出现次数。"
@@ -105,6 +107,18 @@ def build_question_hint(answer: dict[str, Any], fields: list[dict[str, Any]], qu
     text = re.sub(r"^(?:答案|这个方块|这个物品|这个生物|这个实体|这个东西|它)(?:的)?", "", text).strip()
     if text.startswith("会不会"):
         text = "是否" + text[3:]
+    # "有颜色变体吗" asks about the property, not characters in the answer.
+    if any(field.get("key") == "variants" for field in fields):
+        variant = re.fullmatch(r"(没有|不含|不包含|无|是否有|是否|有没有|有无|有|是)?(颜色|品种)(?:变体|变种)", text)
+        if variant:
+            negative = variant.group(1) in {"没有", "不含", "不包含", "无"}
+            return build_question_hint(answer, fields, "变体 " + ("不含 " if negative else "") + variant.group(2))
+        if text in {"有什么变体", "有哪些变体", "有什么变种", "有哪些变种"}:
+            return _reveal(answer, fields, "variants")
+        if text in {"有变体", "有没有变体", "是否有变体", "有变种", "有没有变种"}:
+            return build_question_hint(answer, fields, "变体 不是 无")
+        if text in {"没有变体", "无变体", "没有变种", "无变种"}:
+            return build_question_hint(answer, fields, "变体 无")
     contains = re.fullmatch(r"(?:(?:名字|名称|中文名)(?:里|中)?)?(?:是否|有没有)?(?:包含|含有|含字|含(?![有字])|有)\s*(.+)", text)
     if contains:
         query = _unquote(contains.group(1))

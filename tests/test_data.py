@@ -24,6 +24,7 @@ FIELD_ORDER = {
         "dimensions",
         "inventory_categories",
         "name_length",
+        "variants",
         "hardness",
         "blast_resistance",
         "tool",
@@ -39,6 +40,7 @@ FIELD_ORDER = {
     "item": [
         "dimensions",
         "name_length",
+        "variants",
         "rarity",
         "stackable",
         "renewable",
@@ -49,7 +51,7 @@ FIELD_ORDER = {
         "loot",
         "initial_release",
     ],
-    "mob": ["dimensions", "inventory_categories", "name_length", "health", "height", "behavior", "spawn", "classification", "initial_release"],
+    "mob": ["dimensions", "inventory_categories", "name_length", "variants", "health", "height", "behavior", "spawn", "classification", "initial_release"],
 }
 ALLOWED_KINDS = {"number", "enum", "set", "version"}
 TIER1_MIN = {"block": 60, "item": 50, "mob": 35}
